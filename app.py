@@ -40,10 +40,6 @@ def pedido():
     pedido_id = gerar_numero_pedido()
     return render_template('recibo.html', tamanho=tamanho, carne=carne, adicionais=adicionais, obs=obs, data_hora=data_hora, pedido_id=pedido_id)
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
 import os
 
 if __name__ == '__main__':
