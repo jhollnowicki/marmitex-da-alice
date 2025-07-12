@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Pedido - Marmita</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ url_for('static', filename='scripts/form.js') }}"></script>
+
+    <style>
+        body {
+            background-image: url("/static/imagens/logo.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .btn-option {
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-option.active {
+            background-color: #fd0000;
+            /* pink-500 */
+            color: white;
+            border-color: #ff0202;
+        }
+
+        .btn-option-multi {
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            font-weight: 500;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-option-multi.active {
+            background-color: #f50b0b;
+            /* amarelo */
+            color: white;
+            border-color: #f50b0b;
+        }
+    </style>
+
+</head>
+
+<body class="min-h-screen flex items-center justify-center relative text-black">
+    <form action="/pedido" method="post"
+        class="bg-white/30 backdrop-blur-md p-6 rounded-xl shadow-lg w-[500px] space-y-6 relative z-10">
+        <input type="hidden" name="tipo_formulario" value="marmita">
+
+        <h1 class="text-xl font-bold text-center text-black">Pedido - Marmita</h1>
+
+        <!-- Tipo de pedido -->
+        <div>
+            <label class="block text-sm font-semibold">Tipo de pedido:</label>
+            <select name="tipo_pedido" id="tipo_pedido" class="w-full border rounded px-3 py-2 mt-1">
+                <option value="" disabled selected>Escolha uma opção</option>
+                <option value="Entrega">Entrega</option>
+                <option value="Retirada">Retirada</option>
+            </select>
+        </div>
+
+        <!-- Campos que aparecem após escolha -->
+        <div id="campos-cliente" style="display: none;">
+            <div>
+                <label class="block text-sm font-semibold">Nome:</label>
+                <input name="nome" class="w-full border rounded px-3 py-2 mt-1" required />
+            </div>
+
+            <div id="campos-entrega" style="display: none;">
+                <div>
+                    <label class="block text-sm font-semibold">Telefone:</label>
+                    <input name="telefone" class="w-full border rounded px-3 py-2 mt-1" />
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold">Endereço:</label>
+                    <input name="endereco" class="w-full border rounded px-3 py-2 mt-1" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Tamanho da marmita -->
+        <div>
+            <span class="text-sm font-semibold">Tamanho da Marmita:</span>
+            <div class="flex flex-wrap gap-2 mt-2">
+                <button type="button" class="btn-option" data-group="tamanho" data-value="Mini">Mini</button>
+                <button type="button" class="btn-option" data-group="tamanho" data-value="Media">Média</button>
+                <button type="button" class="btn-option" data-group="tamanho" data-value="Grande">Grande</button>
+                <button type="button" class="btn-option" data-group="tamanho" data-value="Top 3">Top 3</button>
+                <button type="button" class="btn-option" data-group="tamanho" data-value="Executivo">Executivo</button>
+            </div>
+            <input type="hidden" name="tamanho" id="input-tamanho" />
+        </div>
+
+        <!-- Tipo de carne -->
+        <div>
+            <span class="text-sm font-semibold">Tipo de Carne:</span>
+            <div class="flex flex-wrap gap-2 mt-2">
+                <button type="button" class="btn-option" data-group="carne" data-value="Strogonoff de Frango">Strogonoff
+                    de Frango</button>
+                <button type="button" class="btn-option" data-group="carne" data-value="Bife grelhado">Bife
+                    grelhado</button>
+                <button type="button" class="btn-option" data-group="carne" data-value="Filé de peito à milanesa">Filé à
+                    milanesa</button>
+                <button type="button" class="btn-option" data-group="carne" data-value="Linguiça">Linguiça</button>
+            </div>
+            <input type="hidden" name="carne" id="input-carne" />
+        </div>
+
+        <!-- Adicionais -->
+        <div>
+            <span class="text-sm font-semibold">Adicionais:</span>
+            <div class="flex flex-wrap gap-2 mt-2">
+                <button type="button" class="btn-option-multi" data-value="Strogonoff de Frango">Strogonoff de
+                    Frango</button>
+                <button type="button" class="btn-option-multi" data-value="Bife grelhado">Bife grelhado</button>
+                <button type="button" class="btn-option-multi" data-value="Filé de peito à milanesa">Filé à
+                    milanesa</button>
+                <button type="button" class="btn-option-multi" data-value="Linguiça">Linguiça</button>
+            </div>
+            <input type="hidden" name="adicionais" id="input-adicionais" />
+        </div>
+
+        <!-- Observações -->
+        <div>
+            <span class="text-sm font-semibold">Observações:</span>
+            <textarea name="obs" class="w-full border rounded px-3 py-2 mt-1" rows="2"
+                placeholder="Ex: sem salada, com ovo..."></textarea>
+        </div>
+
+        <button type="submit"
+            class="w-full bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition duration-300">
+            Finalizar Pedido
+        </button>
+    </form>
+</body>
+
+</html>

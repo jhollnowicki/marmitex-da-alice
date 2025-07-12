@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Recibo - Marmitex</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url("/static/imagens/logo.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    @media print {
+      body {
+        background-image: url("/static/imagens/logo.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      body * {
+        visibility: hidden;
+      }
+
+      .print-area, .print-area * {
+        visibility: visible;
+      }
+
+      .print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 58mm;
+        font-size: 12px;
+        background-color: white !important;
+        padding: 16px;
+        border-radius: 12px;
+      }
+
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center relative text-black">
+
+  <!-- Recibo -->
+  <div class="print-area bg-white/40 backdrop-blur-md rounded-xl p-4 w-[230px] z-10 shadow-lg text-sm leading-normal font-bold">
+    <h2 class="text-center text-xs mb-1">🍛 MARMITEX DA ALICE 🍛</h2>
+    <hr class="border-t border-gray-400 my-1">
+
+    <p><strong>Pedido Nº:</strong> {{ pedido_id }}</p>
+    <p><strong>Tipo:</strong> {{ tipo_pedido }}</p>
+    <p><strong>Nome:</strong> {{ nome }}</p>
+    {% if telefone %}<p><strong>Telefone:</strong> {{ telefone }}</p>{% endif %}
+    {% if endereco %}<p><strong>Endereço:</strong> {{ endereco.upper() }}</p>{% endif %}
+
+    <hr class="border-t border-gray-300 my-2">
+
+    <p><strong>Tamanho:</strong> {{ tamanho }}</p>
+    <p><strong>Carne:</strong> {{ carne }}</p>
+    {% if adicionais %}<p><strong>Adicionais:</strong> {{ adicionais }}</p>{% endif %}
+    {% if obs %}<p><strong>Obs:</strong> {{ obs }}</p>{% endif %}
+
+    <hr class="border-t border-gray-300 my-2">
+    <p class="text-right text-xs italic font-normal">{{ data_hora }}</p>
+  </div>
+
+  <!-- Botão imprimir -->
+  <button onclick="window.print()" class="no-print font-bold absolute bottom-20 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+    Imprimir
+  </button>
+
+  <script>
+    window.onafterprint = () => {
+      window.location.href = "/escolha";
+    };
+  </script>
+</body>
+</html>
