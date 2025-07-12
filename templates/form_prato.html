@@ -15,21 +15,7 @@
       background-attachment: fixed;
     }
 
-    .btn-option {
-      padding: 6px 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background-color: white;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .btn-option.active {
-      background-color: #fd0000;
-      color: white;
-      border-color: #ff0202;
-    }
-
+    .btn-option,
     .btn-option-multi {
       padding: 6px 12px;
       border: 1px solid #ccc;
@@ -40,6 +26,7 @@
       white-space: nowrap;
     }
 
+    .btn-option.active,
     .btn-option-multi.active {
       background-color: #f50b0b;
       color: white;
@@ -48,15 +35,14 @@
   </style>
 </head>
 
-<body class="min-h-screen flex items-center justify-center relative text-black">
+<body class="min-h-screen flex items-center justify-center px-4 text-black">
 
   <form action="/pedido" method="post"
-    class="bg-white/30 backdrop-blur-md p-6 rounded-xl shadow-lg w-[500px] space-y-6 relative z-10">
+    class="bg-white/30 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-lg w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[40%] max-w-2xl space-y-6 relative z-10 text-[15px] sm:text-[16px]">
 
-    <!-- Identificador do tipo de formulário -->
     <input type="hidden" name="tipo_formulario" value="prato">
 
-    <h1 class="text-xl font-bold text-center text-black">Pedido - Prato Feito</h1>
+    <h1 class="text-xl sm:text-2xl font-bold text-center text-black">Pedido - Prato Feito</h1>
 
     <!-- Nome -->
     <div>
@@ -68,11 +54,9 @@
     <div>
       <span class="text-sm font-semibold">Tipo de Carne:</span>
       <div class="flex flex-wrap gap-2 mt-2">
-        <button type="button" class="btn-option" data-group="carne" data-value="Strogonoff de Frango">Strogonoff de
-          Frango</button>
+        <button type="button" class="btn-option" data-group="carne" data-value="Strogonoff de Frango">Strogonoff</button>
         <button type="button" class="btn-option" data-group="carne" data-value="Bife grelhado">Bife grelhado</button>
-        <button type="button" class="btn-option" data-group="carne" data-value="Filé de peito à milanesa">Filé de peito
-          à milanesa</button>
+        <button type="button" class="btn-option" data-group="carne" data-value="Filé de peito à milanesa">Filé à milanesa</button>
         <button type="button" class="btn-option" data-group="carne" data-value="Linguiça">Linguiça</button>
       </div>
       <input type="hidden" name="carne" id="input-carne" />
@@ -82,10 +66,9 @@
     <div>
       <span class="text-sm font-semibold">Adicionais:</span>
       <div class="flex flex-wrap gap-2 mt-2">
-        <button type="button" class="btn-option-multi" data-value="Strogonoff de Frango">Strogonoff de Frango</button>
+        <button type="button" class="btn-option-multi" data-value="Strogonoff de Frango">Strogonoff</button>
         <button type="button" class="btn-option-multi" data-value="Bife grelhado">Bife grelhado</button>
-        <button type="button" class="btn-option-multi" data-value="Filé de peito à milanesa">Filé de peito à
-          milanesa</button>
+        <button type="button" class="btn-option-multi" data-value="Filé de peito à milanesa">Filé à milanesa</button>
         <button type="button" class="btn-option-multi" data-value="Linguiça">Linguiça</button>
       </div>
       <input type="hidden" name="adicionais" id="input-adicionais" />
@@ -100,7 +83,7 @@
 
     <!-- Botão -->
     <button type="submit"
-      class="w-full bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition duration-300">
+      class="w-full bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition duration-300 text-sm">
       Finalizar Pedido
     </button>
   </form>

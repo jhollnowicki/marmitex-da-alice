@@ -6,77 +6,81 @@
     <title>Recibo - Prato Feito</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            background-image: url("/static/imagens/logo.png");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-        }
+  body {
+    background-image: url("/static/imagens/logo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
 
-        @media print {
-            body {
-                background-image: url("/static/imagens/logo.png");
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
+  @media print {
+    body {
+      background: white;
+    }
 
-            body * {
-                visibility: hidden;
-            }
+    body * {
+      visibility: hidden;
+    }
 
-            .print-area,
-            .print-area * {
-                visibility: visible;
-            }
+    .print-area, .print-area * {
+      visibility: visible;
+    }
 
-            .print-area {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 58mm;
-                font-size: 12px;
-                background-color: white !important;
-                padding: 16px;
-                border-radius: 12px;
-            }
+    .print-area {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 58mm !important;
+      font-size: 12px !important;
+      padding: 16px !important;
+      background-color: white !important;
+      border-radius: 12px;
+    }
 
-            .no-print {
-                display: none;
-            }
-        }
-    </style>
+    .no-print {
+      display: none;
+    }
+  }
+</style>
+
 </head>
 
-<body class="min-h-screen flex items-center justify-center relative text-black">
+<body class="min-h-screen flex items-center justify-center px-4 py-10 text-black">
 
-    <!-- Recibo -->
-    <div class="print-area bg-white/40 backdrop-blur-md rounded-xl p-4 w-[230px] z-10 shadow-lg text-sm leading-normal">
-        <h2 class="text-center font-bold text-xs mb-1">🍽️ PRATO FEITO - ALICE 🍽️</h2>
-        <hr class="border-t border-gray-400 my-1">
+    <!-- Contêiner geral -->
+    <div class="flex flex-col items-center space-y-6">
 
-        <div class="font-bold">
-            <p><strong>Pedido Nº:</strong> {{ pedido_id }}</p>
-            <p><strong>Tipo:</strong> Prato Feito</p>
-            <p><strong>Nome:</strong> {{ nome }}</p>
+        <!-- Recibo -->
+        <div
+            class="print-area bg-white/40 backdrop-blur-md rounded-xl p-8 w-full max-w-lg shadow-lg text-[15px] leading-relaxed font-bold">
+            <h2 class="text-center text-sm mb-2">🍽️ MARMITEX DA ALICE 🍽️</h2>
+            <hr class="border-t border-gray-400 my-2">
 
-            <hr class="border-t border-gray-300 my-2">
+            <div class="space-y-2">
+                <p><strong>Pedido Nº:</strong> {{ pedido_id }}</p>
+                <p><strong>Tipo:</strong> Prato Feito</p>
+                <p><strong>Nome:</strong> {{ nome }}</p>
 
-            <p><strong>Carne:</strong> {{ carne }}</p>
-            {% if adicionais %}<p><strong>Adicionais:</strong> {{ adicionais }}</p>{% endif %}
-            {% if obs %}<p><strong>Obs:</strong> {{ obs }}</p>{% endif %}
+                <hr class="border-t border-gray-300 my-2">
+
+                <p><strong>Carne:</strong> {{ carne }}</p>
+                {% if adicionais %}<p><strong>Adicionais:</strong> {{ adicionais }}</p>{% endif %}
+                {% if obs %}<p><strong>Obs:</strong> {{ obs }}</p>{% endif %}
+
+                <hr class="border-t border-gray-300 my-2">
+                <p class="text-right text-xs italic font-normal">{{ data_hora }}</p>
+            </div>
         </div>
 
-        <hr class="border-t border-gray-300 my-2">
-        <p class="text-right text-xs italic">{{ data_hora }}</p>
+        <!-- Botão imprimir -->
+        <div class="no-print">
+            <button onclick="window.print()"
+                class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
+                Imprimir
+            </button>
+        </div>
     </div>
-
-    <!-- Botão imprimir -->
-    <button onclick="window.print()"
-        class="no-print font-bold absolute bottom-20 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-        Imprimir
-    </button>
 
     <script>
         window.onafterprint = () => {
@@ -84,5 +88,8 @@
         };
     </script>
 </body>
+
+
+
 
 </html>
