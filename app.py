@@ -2,8 +2,36 @@ import json
 from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import datetime
 import os
+
 app = Flask(__name__)
 app.secret_key = 'chave_super_secreta'
+
+PRECOS = {
+    'marmita': {
+        'tamanhos': {
+            'Mini': 16.00,
+            'Media': 18.00,
+            'Grande': 20.00,
+            'Top 3': 25.00,
+            'Executivo': 28.00
+        },
+        'adicionais': {
+            'Strogonoff de Frango': 7.00,
+            'Bife grelhado': 7.00,
+            'Filé de peito à milanesa': 7.00,
+            'Linguiça': 0.00
+        }
+    },
+    'prato': {
+        'base': 17.90,
+        'adicionais': {
+            'Strogonoff de Frango': 7.00,
+            'Bife grelhado': 7.00,
+            'Filé de peito à milanesa': 7.00,
+            'Linguiça': 7.00
+        }
+    }
+}
 
 
 def gerar_numero_pedido():
@@ -16,11 +44,9 @@ def gerar_numero_pedido():
     hoje = datetime.now().strftime('%Y-%m-%d')
 
     if dados["data"] != hoje:
-        # Novo dia, reinicia contador
         dados["data"] = hoje
         dados["numero"] = 1
     else:
-        # Mesmo dia, incrementa
         dados["numero"] += 1
 
     with open('contador.json', 'w') as file:
@@ -28,9 +54,12 @@ def gerar_numero_pedido():
 
     return dados["numero"]
 
+
 @app.route('/')
 def index():
     return redirect(url_for('login'))
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     erro = None
@@ -44,6 +73,7 @@ def login():
             erro = "Usuário ou senha inválidos"
     return render_template('login.html', erro=erro)
 
+
 @app.route('/logout')
 def logout():
     session.clear()
@@ -56,11 +86,13 @@ def escolha_tipo():
         return redirect(url_for('login'))
     return render_template('escolha.html')
 
+
 @app.route('/pedido/marmita')
 def formulario_marmita():
     if 'usuario' not in session:
         return redirect(url_for('login'))
     return render_template('form_marmita.html')
+
 
 @app.route('/pedido/prato-feito')
 def formulario_prato_feito():
@@ -73,29 +105,99 @@ def formulario_prato_feito():
 def pedido():
     if 'usuario' not in session:
         return redirect(url_for('login'))
+
     tipo_formulario = request.form.get("tipo_formulario")
     pedido_id = gerar_numero_pedido()
-    
+
     dados = {
         "pedido_id": pedido_id,
-        "tipo_pedido": "Prato Feito" if tipo_formulario == "prato" else request.form.get("tipo_pedido"),
+        "tipo_pedido": request.form.get("tipo_pedido"),
         "nome": request.form.get("nome"),
         "telefone": request.form.get("telefone"),
         "endereco": request.form.get("endereco"),
-        "carne": request.form.get("carne"),
-        "adicionais": request.form.get("adicionais"),
-        "obs": request.form.get("obs"),
-        "data_hora": datetime.now().strftime("%d/%m/%Y %H:%M")
+        "data_hora": datetime.now().strftime("%d/%m/%Y %H:%M"),
+        "valor_total": 0.0
     }
-    if tipo_formulario == "marmita":
-        dados["tamanho"] = request.form.get("tamanho")
+
+    total = 0.0
 
     if tipo_formulario == "marmita":
-        return render_template("recibo_marmita.html", **dados)
+        marmitas = []
+        for key in request.form:
+            if key.startswith("marmitas["):
+                index = key.split("[")[1].split("]")[0]
+                field = key.split("[")[2].split("]")[0]
+                while len(marmitas) <= int(index):
+                    marmitas.append({})
+                marmitas[int(index)][field] = request.form[key]
+        for marmita in marmitas:
+            preco = calcular_preco_marmita(marmita)
+            marmita["preco"] = preco
+            total += preco
+        dados["marmitas"] = marmitas
+        dados["valor_total"] = round(total, 2)
+        return render_template("recibo_marmita.html", **dados, PRECOS=PRECOS)
+
     elif tipo_formulario == "prato":
-        return render_template("recibo_prato.html", **dados)
-    else:
-        return "Tipo de formulário inválido", 400
+        pratos = []
+        for key in request.form:
+            if key.startswith("pratos["):
+                index = key.split("[")[1].split("]")[0]
+                field = key.split("[")[2].split("]")[0]
+                while len(pratos) <= int(index):
+                    pratos.append({})
+                pratos[int(index)][field] = request.form[key]
+        for prato in pratos:
+            preco = calcular_valor_total(prato)
+            prato["preco"] = preco
+            total += preco
+        dados["pratos"] = pratos
+        dados["valor_total"] = round(total, 2)
+        return render_template("recibo_prato.html", **dados, PRECOS=PRECOS)
+
+    # fallback em caso de erro
+    return redirect(url_for('escolha_tipo'))
+
+
+
+def calcular_preco_marmita(marmita):
+    tamanho = marmita.get('tamanho', '')
+    adicionais_str = marmita.get('adicionais', '')
+    adicionais = [a.strip() for a in adicionais_str.split(',') if a.strip()]
+
+    valor = PRECOS['marmita']['tamanhos'].get(tamanho, 0)
+    for adicional in adicionais:
+        valor += PRECOS['marmita']['adicionais'].get(adicional, 0)
+
+    return round(valor, 2)
+
+
+def calcular_valor_total_multiplo(marmitas):
+    total = 0.0
+    for marmita in marmitas:
+        tamanho = marmita.get('tamanho', '')
+        adicionais_str = marmita.get('adicionais', '')
+        adicionais = [a.strip() for a in adicionais_str.split(',') if a.strip()]
+        
+        valor = PRECOS['marmita']['tamanhos'].get(tamanho, 0)
+        for adicional in adicionais:
+            valor += PRECOS['marmita']['adicionais'].get(adicional, 0)
+        
+        total += valor
+    return round(total, 2)
+
+
+
+def calcular_valor_total(prato):
+    adicionais_str = prato.get('adicionais', '')
+    adicionais = [a.strip() for a in adicionais_str.split(',') if a.strip()]
+
+    valor = PRECOS['prato']['base']
+    for adicional in adicionais:
+        valor += PRECOS['prato']['adicionais'].get(adicional, 0)
+    return round(valor, 2)
+
+
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

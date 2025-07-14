@@ -14,11 +14,18 @@
       background-attachment: fixed;
     }
 
-    @media print {
-      body {
-        background: white;
-      }
+    .print-area {
+      background-color: rgba(255, 255, 255, 0.39);
+      /* Fundo opaco */
+      backdrop-filter: blur(8px);
+      /* Desfoque de fundo */
+      border-radius: 16px;
+      padding: 24px;
+      width: 100%;
+      max-width: 420px;
+    }
 
+    @media print {
       body * {
         visibility: hidden;
       }
@@ -32,10 +39,11 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 58mm !important;
-        font-size: 12px !important;
-        padding: 16px !important;
+        width: 58mm;
+        font-size: 12px;
         background-color: white !important;
+        /* Para impressão */
+        padding: 16px;
         border-radius: 12px;
       }
 
@@ -47,36 +55,90 @@
 </head>
 
 <body class="min-h-screen flex items-center justify-center px-4 py-10 text-black">
-
   <div class="flex flex-col items-center space-y-6">
 
     <!-- Recibo -->
-    <div class="print-area bg-white/40 backdrop-blur-md rounded-xl p-8 w-full max-w-lg shadow-lg text-[15px] leading-relaxed font-bold">
-      <h2 class="text-center text-sm mb-2">🍛 MARMITEX DA ALICE 🍛</h2>
+    <div class="print-area w-full max-w-md text-[14px] leading-relaxed">
+      <div class="text-center font-bold text-red-600 text-lg mb-2">🍱 Marmitez da Alice 🍱</div>
       <hr class="border-t border-gray-400 my-2">
 
-      <div class="space-y-2">
-        <p><strong>Pedido Nº:</strong> {{ pedido_id }}</p>
-        <p><strong>Tipo:</strong> {{ tipo_pedido }}</p>
-        <p><strong>Nome:</strong> {{ nome }}</p>
-        {% if telefone %}<p><strong>Telefone:</strong> {{ telefone }}</p>{% endif %}
-        {% if endereco %}<p><strong>Endereço:</strong> {{ endereco.upper() }}</p>{% endif %}
-
-        <hr class="border-t border-gray-300 my-2">
-
-        <p><strong>Tamanho:</strong> {{ tamanho }}</p>
-        <p><strong>Carne:</strong> {{ carne }}</p>
-        {% if adicionais %}<p><strong>Adicionais:</strong> {{ adicionais }}</p>{% endif %}
-        {% if obs %}<p><strong>Obs:</strong> {{ obs }}</p>{% endif %}
-
-        <hr class="border-t border-gray-300 my-2">
-        <p class="text-right text-xs italic font-normal">{{ data_hora }}</p>
+      <!-- Cliente -->
+      <div class="mb-2 font-semibold">
+        <p class="font-bold">Cliente</p>
+        <p>Nome: {{ nome }}</p>
+        <p>Telefone: {{ telefone }}</p>
       </div>
+
+      <!-- Endereço -->
+      <div class="mb-2 font-semibold">
+        <p class="font-bold">Endereço de entrega</p>
+        <p>{{ endereco }}</p>
+      </div>
+
+      <!-- Data e Hora -->
+      <div class="mb-2 font-semibold">
+        <p class="font-bold">Itens do pedido</p>
+        <p>Data: {{ data_hora.split(" ")[0] }}</p>
+        <p>Hora: {{ data_hora.split(" ")[1] }}</p>
+      </div>
+
+      <hr class="border-t border-gray-400 my-2">
+
+      <!-- Itens -->
+      <div class="mb-2">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-300">
+              <th class="text-left w-1/6">Qtd</th>
+              <th class="text-left w-4/6">Item</th>
+              <th class="text-right w-1/6">Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for marmita in marmitas %}
+            <tr class="font-semibold align-top">
+              <td>1</td>
+              <td>
+                Marmita {{ marmita.tamanho }}<br>
+                <small>{{ marmita.carne }}</small>
+                {% if marmita.adicionais %}
+                <br><small>+ {{ marmita.adicionais }}</small>
+                {% endif %}
+              </td>
+              <td class="text-right">R$ {{ '%.2f' | format(marmita.preco) }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="border-t border-gray-300 my-2">
+
+      <!-- Totais -->
+      <div class="text-sm space-y-1">
+        <p class="font-semibold">Itens do pedido <span class="float-right">R$ {{ '%.2f' | format(valor_total) }}</span></p>
+        <p class="font-semibold">Taxa de entrega <span class="float-right">R$ 0,00</span></p>
+        <p class="font-bold">Subtotal <span class="float-right font-semibold">R$ {{ '%.2f' | format(valor_total)
+            }}</span></p>
+      </div>
+
+      <hr class="border-t border-gray-300 my-2">
+
+      <!-- Forma de Pagamento -->
+      <p class="font-semibold mb-1">Forma de pagamento</p>
+      <p>Pix <span class="float-right">R$ {{ '%.2f' | format(valor_total) }}</span></p>
+
+      {% if obs %}
+      <hr class="border-t border-gray-300 my-2">
+      <p class="font-semibold">Observação</p>
+      <p>{{ obs }}</p>
+      {% endif %}
     </div>
 
-    <!-- Botão imprimir -->
+    <!-- Botão Imprimir -->
     <div class="no-print">
-      <button onclick="window.print()" class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
+      <button onclick="window.print()"
+        class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
         Imprimir
       </button>
     </div>

@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <title>Pedido - Marmita</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="{{ url_for('static', filename='scripts/form.js') }}"></script>
+  <script src="{{ url_for('static', filename='scripts/form.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='scripts/marmita_sacola.js') }}" defer></script>
 
   <style>
     body {
@@ -16,30 +17,30 @@
       background-attachment: fixed;
     }
 
-    .btn-option,
-    .btn-option-multi {
-      padding: 6px 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+    .btn-option {
+      padding: 6px 16px;
+      border: 2px solid #555;
+      border-radius: 12px;
       background-color: white;
       font-weight: 500;
-      transition: all 0.2s;
-      white-space: nowrap;
+      transition: all 0.2s ease-in-out;
     }
 
-    .btn-option.active,
-    .btn-option-multi.active {
+    .btn-option.active {
       background-color: #f50b0b;
       color: white;
       border-color: #f50b0b;
+    }
+
+    .tag {
+      @apply px-2 py-1 bg-red-100 text-red-700 text-sm rounded;
     }
   </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center px-4 text-black">
   <form action="/pedido" method="post"
-  class="bg-white/30 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-lg w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[40%] max-w-2xl space-y-6 relative z-10 text-[15px] sm:text-[16px]">
-
+    class="bg-white/30 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-lg w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[40%] max-w-2xl space-y-6 relative z-10 text-[15px] sm:text-[16px]">
 
     <input type="hidden" name="tipo_formulario" value="marmita">
 
@@ -55,71 +56,71 @@
       </select>
     </div>
 
-    <!-- Campos após escolha -->
+    <!-- Dados do cliente -->
     <div id="campos-cliente" style="display: none;">
       <div>
         <label class="block text-sm font-semibold">Nome:</label>
         <input name="nome" class="w-full border rounded px-3 py-2 mt-1 text-sm" required />
       </div>
-
       <div id="campos-entrega" style="display: none;">
-        <div>
-          <label class="block text-sm font-semibold">Telefone:</label>
-          <input name="telefone" class="w-full border rounded px-3 py-2 mt-1 text-sm" />
+        <label class="block text-sm font-semibold mt-2">Telefone:</label>
+        <input name="telefone" class="w-full border rounded px-3 py-2 mt-1 text-sm" />
+        <label class="block text-sm font-semibold mt-2">Endereço:</label>
+        <input name="endereco" class="w-full border rounded px-3 py-2 mt-1 text-sm" />
+      </div>
+    </div>
+
+    <!-- Escolha da Marmita -->
+    <div id="marmita-form" class="space-y-4">
+      <div>
+        <label class="block font-semibold">Tamanho da Marmita:</label>
+        <div class="flex flex-wrap gap-2 mt-1" id="tamanhos">
+          <button type="button" class="btn-option" data-value="Mini">Mini</button>
+          <button type="button" class="btn-option" data-value="Media">Média</button>
+          <button type="button" class="btn-option" data-value="Grande">Grande</button>
+          <button type="button" class="btn-option" data-value="Top 3">Top 3</button>
+          <button type="button" class="btn-option" data-value="Executivo">Executivo</button>
         </div>
-        <div>
-          <label class="block text-sm font-semibold">Endereço:</label>
-          <input name="endereco" class="w-full border rounded px-3 py-2 mt-1 text-sm" />
+      </div>
+
+      <div>
+        <label class="block font-semibold">Tipo de Carne:</label>
+        <div class="flex flex-wrap gap-2 mt-1" id="carnes">
+          <button type="button" class="btn-option" data-value="Strogonoff de Frango">Strogonoff de Frango</button>
+          <button type="button" class="btn-option" data-value="Bife grelhado">Bife grelhado</button>
+          <button type="button" class="btn-option" data-value="Filé de peito à milanesa">Filé à milanesa</button>
+          <button type="button" class="btn-option" data-value="Linguiça">Linguiça</button>
         </div>
       </div>
-    </div>
 
-    <!-- Tamanho da marmita -->
-    <div>
-      <span class="text-sm font-semibold">Tamanho da Marmita:</span>
-      <div class="flex flex-wrap gap-2 mt-2">
-        <button type="button" class="btn-option" data-group="tamanho" data-value="Mini">Mini</button>
-        <button type="button" class="btn-option" data-group="tamanho" data-value="Media">Média</button>
-        <button type="button" class="btn-option" data-group="tamanho" data-value="Grande">Grande</button>
-        <button type="button" class="btn-option" data-group="tamanho" data-value="Top 3">Top 3</button>
-        <button type="button" class="btn-option" data-group="tamanho" data-value="Executivo">Executivo</button>
+      <div>
+        <label class="block font-semibold">Adicionais:</label>
+        <div class="flex flex-wrap gap-2 mt-1" id="adicionais">
+          <button type="button" class="btn-option" data-value="Strogonoff de Frango">Strogonoff de Frango</button>
+          <button type="button" class="btn-option" data-value="Bife grelhado">Bife grelhado</button>
+          <button type="button" class="btn-option" data-value="Filé de peito à milanesa">Filé à milanesa</button>
+          <button type="button" class="btn-option" data-value="Linguiça">Linguiça</button>
+        </div>
       </div>
-      <input type="hidden" name="tamanho" id="input-tamanho" />
-    </div>
 
-    <!-- Tipo de carne -->
-    <div>
-      <span class="text-sm font-semibold">Tipo de Carne:</span>
-      <div class="flex flex-wrap gap-2 mt-2">
-        <button type="button" class="btn-option" data-group="carne" data-value="Strogonoff de Frango">Strogonoff</button>
-        <button type="button" class="btn-option" data-group="carne" data-value="Bife grelhado">Bife grelhado</button>
-        <button type="button" class="btn-option" data-group="carne" data-value="Filé de peito à milanesa">Filé à milanesa</button>
-        <button type="button" class="btn-option" data-group="carne" data-value="Linguiça">Linguiça</button>
+      <div>
+        <label class="block font-semibold">Observações:</label>
+        <textarea id="observacoes" class="w-full border rounded px-3 py-2 mt-1 text-sm"
+          placeholder="Ex: sem salada, com ovo..."></textarea>
       </div>
-      <input type="hidden" name="carne" id="input-carne" />
     </div>
 
-    <!-- Adicionais -->
-    <div>
-      <span class="text-sm font-semibold">Adicionais:</span>
-      <div class="flex flex-wrap gap-2 mt-2">
-        <button type="button" class="btn-option-multi" data-value="Strogonoff de Frango">Strogonoff</button>
-        <button type="button" class="btn-option-multi" data-value="Bife grelhado">Bife grelhado</button>
-        <button type="button" class="btn-option-multi" data-value="Filé de peito à milanesa">Filé à milanesa</button>
-        <button type="button" class="btn-option-multi" data-value="Linguiça">Linguiça</button>
-      </div>
-      <input type="hidden" name="adicionais" id="input-adicionais" />
-    </div>
+    <!-- Botão de adicionar -->
+    <button type="button" id="add-marmita"
+      class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">
+      + Adicionar Marmita
+    </button>
 
-    <!-- Observações -->
-    <div>
-      <span class="text-sm font-semibold">Observações:</span>
-      <textarea name="obs" class="w-full border rounded px-3 py-2 mt-1 text-sm" rows="2"
-        placeholder="Ex: sem salada, com ovo..."></textarea>
-    </div>
+    <!-- Sacola de pedidos -->
+    <div id="sacola" class="space-y-3 pt-4"></div>
 
     <button type="submit"
-      class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 text-sm">
+      class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
       Finalizar Pedido
     </button>
   </form>

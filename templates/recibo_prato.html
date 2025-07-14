@@ -2,94 +2,140 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Recibo - Prato Feito</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-  body {
-    background-image: url("/static/imagens/logo.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-  }
-
-  @media print {
+  <meta charset="UTF-8">
+  <title>Recibo - Prato Feito</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
     body {
-      background: white;
-    }
-
-    body * {
-      visibility: hidden;
-    }
-
-    .print-area, .print-area * {
-      visibility: visible;
+      background-image: url("/static/imagens/logo.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
     }
 
     .print-area {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 58mm !important;
-      font-size: 12px !important;
-      padding: 16px !important;
-      background-color: white !important;
-      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.39);
+      /* Fundo opaco */
+      backdrop-filter: blur(8px);
+      /* Desfoque de fundo */
+      border-radius: 16px;
+      padding: 24px;
+      width: 100%;
+      max-width: 420px;
     }
 
-    .no-print {
-      display: none;
-    }
-  }
-</style>
+    @media print {
+      body * {
+        visibility: hidden;
+      }
 
+      .print-area,
+      .print-area * {
+        visibility: visible;
+      }
+
+      .print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 58mm;
+        font-size: 12px;
+        background-color: white !important;
+        /* Para impressão */
+        padding: 16px;
+        border-radius: 12px;
+      }
+
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center px-4 py-10 text-black">
+  <div class="flex flex-col items-center space-y-6">
 
-    <!-- Contêiner geral -->
-    <div class="flex flex-col items-center space-y-6">
+    <!-- Recibo -->
+    <div class="print-area w-full max-w-md text-[14px] leading-relaxed">
+      <div class="text-center font-bold text-red-600 text-lg mb-2">🍽️ Marmitez da Alice 🍽️</div>
+      <hr class="border-t border-gray-400 my-2">
 
-        <!-- Recibo -->
-        <div
-            class="print-area bg-white/40 backdrop-blur-md rounded-xl p-8 w-full max-w-lg shadow-lg text-[15px] leading-relaxed font-bold">
-            <h2 class="text-center text-sm mb-2">🍽️ MARMITEX DA ALICE 🍽️</h2>
-            <hr class="border-t border-gray-400 my-2">
+      <!-- Cliente -->
+      <div class="mb-2 font-bold">
+        <p class="font-bold">Cliente</p>
+        <p>Nome: {{ nome }}</p>
+        <p>Pedido Nº: {{ pedido_id }}</p>
+      </div>
 
-            <div class="space-y-2">
-                <p><strong>Pedido Nº:</strong> {{ pedido_id }}</p>
-                <p><strong>Tipo:</strong> Prato Feito</p>
-                <p><strong>Nome:</strong> {{ nome }}</p>
+      <!-- Data e Hora -->
+      <div class="mb-2 font-semibold">
+        <p class="font-bold">Itens do pedido</p>
+        <p>Data: {{ data_hora.split(" ")[0] }}</p>
+        <p>Hora: {{ data_hora.split(" ")[1] }}</p>
+      </div>
 
-                <hr class="border-t border-gray-300 my-2">
+      <hr class="border-t border-gray-400 my-2">
 
-                <p><strong>Carne:</strong> {{ carne }}</p>
-                {% if adicionais %}<p><strong>Adicionais:</strong> {{ adicionais }}</p>{% endif %}
-                {% if obs %}<p><strong>Obs:</strong> {{ obs }}</p>{% endif %}
+      <!-- Itens -->
+      <div class="mb-2">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-300">
+              <th class="text-left w-1/6">Qtd</th>
+              <th class="text-left w-4/6">Item</th>
+              <th class="text-right w-1/6">Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for prato in pratos %}
+            <tr class="font-semibold align-top">
+              <td>1</td>
+              <td>
+                Base: {{ prato.base }}<br>
+                {% if prato.adicionais %}
+                <small>Carne: {{ prato.adicionais }}</small><br>
+                {% endif %}
+                {% if prato.observacoes %}
+                <small>Obs: {{ prato.observacoes }}</small>
+                {% endif %}
+              </td>
+              <td class="text-right">R$ {{ '%.2f' | format(prato.preco) }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
 
-                <hr class="border-t border-gray-300 my-2">
-                <p class="text-right text-xs italic font-normal">{{ data_hora }}</p>
-            </div>
-        </div>
+      <hr class="border-t border-gray-300 my-2">
 
-        <!-- Botão imprimir -->
-        <div class="no-print">
-            <button onclick="window.print()"
-                class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
-                Imprimir
-            </button>
-        </div>
+      <!-- Totais -->
+      <div class="text-sm space-y-1 font-semibold">
+        <p>Itens do pedido <span class="float-right">R$ {{ '%.2f' | format(valor_total) }}</span></p>
+        <p class="font-semibold">Subtotal <span class="float-right font-semibold">R$ {{ '%.2f' | format(valor_total) }}</span></p>
+      </div>
+
+      <hr class="border-t border-gray-300 my-2">
+
+      <!-- Forma de Pagamento -->
+      <p class="font-semibold mb-1">Forma de pagamento</p>
+      <p class="font-semibold">Consumo Local <span class="float-right">R$ {{ '%.2f' | format(valor_total) }}</span></p>
     </div>
 
-    <script>
-        window.onafterprint = () => {
-            window.location.href = "/escolha";
-        };
-    </script>
+    <!-- Botão Imprimir -->
+    <div class="no-print">
+      <button onclick="window.print()" class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
+        Imprimir
+      </button>
+    </div>
+  </div>
+
+  <script>
+    window.onafterprint = () => {
+      window.location.href = "/escolha";
+    };
+  </script>
 </body>
-
-
-
 
 </html>
