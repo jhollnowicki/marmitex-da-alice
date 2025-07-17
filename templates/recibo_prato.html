@@ -26,6 +26,19 @@
     }
 
     @media print {
+      @page {
+        size: 58mm auto;
+        margin: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
       body * {
         visibility: hidden;
       }
@@ -39,16 +52,16 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 58mm;
+        width: 80mm;
         font-size: 12px;
+        padding: 0;
+        margin: 0;
+        text-align: left;
         background-color: white !important;
-        /* Para impressão */
-        padding: 16px;
-        border-radius: 12px;
       }
 
       .no-print {
-        display: none;
+        display: none !important;
       }
     }
   </style>
@@ -113,7 +126,8 @@
       <!-- Totais -->
       <div class="text-sm space-y-1 font-semibold">
         <p>Itens do pedido <span class="float-right">R$ {{ '%.2f' | format(valor_total) }}</span></p>
-        <p class="font-semibold">Subtotal <span class="float-right font-semibold">R$ {{ '%.2f' | format(valor_total) }}</span></p>
+        <p class="font-semibold">Subtotal <span class="float-right font-semibold">R$ {{ '%.2f' | format(valor_total)
+            }}</span></p>
       </div>
 
       <hr class="border-t border-gray-300 my-2">
@@ -125,7 +139,8 @@
 
     <!-- Botão Imprimir -->
     <div class="no-print">
-      <button onclick="window.print()" class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
+      <button onclick="window.print()"
+        class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
         Imprimir
       </button>
     </div>

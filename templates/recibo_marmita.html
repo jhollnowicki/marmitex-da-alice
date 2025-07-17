@@ -26,6 +26,19 @@
     }
 
     @media print {
+      @page {
+        size: 58mm auto;
+        margin: 0;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
       body * {
         visibility: hidden;
       }
@@ -41,14 +54,14 @@
         top: 0;
         width: 58mm;
         font-size: 12px;
+        padding: 0;
+        margin: 0;
+        text-align: left;
         background-color: white !important;
-        /* Para impressão */
-        padding: 16px;
-        border-radius: 12px;
       }
 
       .no-print {
-        display: none;
+        display: none !important;
       }
     }
   </style>
