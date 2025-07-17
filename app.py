@@ -1,39 +1,133 @@
 import json
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+
 from datetime import datetime
 import os
 
 app = Flask(__name__)
 app.secret_key = 'chave_super_secreta'
 
-PRECOS = {
-    'marmita': {
-        'tamanhos': {
-            'Mini': 16.00,
-            'Media': 18.00,
-            'Grande': 20.00,
-            'Top 3': 25.00,
-            'Executivo': 28.00
-        },
-        'adicionais': {
-            'Strogonoff de Frango': 7.00,
-            'Bife grelhado': 7.00,
-            'Filé de peito à milanesa': 7.00,
-            'Linguiça': 0.00
-        }
-    },
-    'prato': {
-        'base': 17.90,
-        'adicionais': {
-            'Strogonoff de Frango': 7.00,
-            'Bife grelhado': 7.00,
-            'Filé de peito à milanesa': 7.00,
-            'Linguiça': 7.00
-        }
-    }
-}
+def carregar_precos():
+    try:
+        with open("precos.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return PRECOS
+
+    
+def salvar_precos(novos_precos):
+    with open("precos.json", "w", encoding="utf-8") as f:
+        json.dump(novos_precos, f, indent=2, ensure_ascii=False)
+
+PRECOS = carregar_precos() 
+
+@app.route('/')
+def index():
+    return redirect(url_for('login'))
 
 
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        usuario = request.form['usuario']
+        senha = request.form['senha']
+        if usuario == 'Bruno' and senha == "Bruno1234":
+            session['usuario'] = 'dono'
+            return redirect(url_for('escolha_tipo'))
+        
+        elif usuario == 'funcionario' and senha == "1234":
+            session['usuario'] = 'funcionario'
+            return redirect(url_for('escolha_tipo'))  # <- sem a barra aqui também
+        else:
+            return render_template("login.html", erro="Usuario ou senha Inválido")
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
+
+@app.route('/editar_cardapio', methods=['GET', 'POST'])
+def editar_cardapio():
+    if 'usuario' not in session or session['usuario'] != 'dono':
+        return redirect(url_for('login'))
+
+    precos = carregar_precos()
+
+    if request.method == 'POST':
+        # Marmita - Tamanhos
+        tamanhos = {}
+        for key, value in request.form.items():
+            if key.startswith("marmita_tamanho_nome_"):
+                idx = key.split("_")[-1]
+                nome = value.strip()
+                preco = float(request.form.get(f"marmita_tamanho_preco_{idx}", 0))
+                if nome:
+                    tamanhos[nome] = preco
+        precos["marmita"]["tamanhos"] = tamanhos
+
+        # Marmita - Adicionais
+        marmita_adicionais = {}
+        for key, value in request.form.items():
+            if key.startswith("marmita_adicional_nome_"):
+                idx = key.split("_")[-1]
+                nome = value.strip()
+                preco = float(request.form.get(f"marmita_adicional_preco_{idx}", 0))
+                if nome:
+                    marmita_adicionais[nome] = preco
+        precos["marmita"]["adicionais"] = marmita_adicionais
+
+        # Marmita - Carnes
+        carnes_marmita = request.form.getlist("carnes_marmita[]")
+        precos["marmita"]["carnes"] = carnes_marmita
+
+        # Prato Feito - Base
+        base_prato = float(request.form.get("prato_feito", 0))
+        precos["prato"]["base"] = base_prato
+
+        # Prato Feito - Adicionais
+        prato_adicionais = {}
+        for key, value in request.form.items():
+            if key.startswith("prato_adicional_nome_"):
+                idx = key.split("_")[-1]
+                nome = value.strip()
+                preco = float(request.form.get(f"prato_adicinal_preco_{idx}", 0))
+                if nome:
+                    prato_adicionais[nome] = preco
+        precos["prato"]["adicionais"] = prato_adicionais
+
+        # Prato Feito - Carnes
+        carnes_prato = request.form.getlist("carnes_prato[]")
+        precos["prato"]["carnes"] = carnes_prato
+
+        # Salvar alterações
+        salvar_precos(precos)
+        global PRECOS
+        PRECOS = precos
+        return redirect(url_for("escolha_tipo"))
+
+    return render_template("editar_cardapio.html", precos=precos)
+
+
+@app.route('/escolha')
+def escolha_tipo():
+    if 'usuario' not in session:
+        return redirect(url_for('login'))
+    return render_template('escolha.html')
+
+
+@app.route('/pedido/marmita')
+def formulario_marmita():
+    if 'usuario' not in session:
+        return redirect(url_for('login'))
+    return render_template('form_marmita.html')
+
+@app.route('/pedido/prato-feito')
+def formulario_prato_feito():
+    if 'usuario' not in session:
+        return redirect(url_for('login'))
+    return render_template('form_prato.html')
 def gerar_numero_pedido():
     try:
         with open('contador.json', 'r') as file:
@@ -53,53 +147,6 @@ def gerar_numero_pedido():
         json.dump(dados, file)
 
     return dados["numero"]
-
-
-@app.route('/')
-def index():
-    return redirect(url_for('login'))
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    erro = None
-    if request.method == 'POST':
-        usuario = request.form.get('usuario')
-        senha = request.form.get('senha')
-        if usuario == 'admin' and senha == '1234':
-            session['usuario'] = usuario
-            return redirect(url_for('escolha_tipo'))
-        else:
-            erro = "Usuário ou senha inválidos"
-    return render_template('login.html', erro=erro)
-
-
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('login'))
-
-
-@app.route('/escolha')
-def escolha_tipo():
-    if 'usuario' not in session:
-        return redirect(url_for('login'))
-    return render_template('escolha.html')
-
-
-@app.route('/pedido/marmita')
-def formulario_marmita():
-    if 'usuario' not in session:
-        return redirect(url_for('login'))
-    return render_template('form_marmita.html')
-
-
-@app.route('/pedido/prato-feito')
-def formulario_prato_feito():
-    if 'usuario' not in session:
-        return redirect(url_for('login'))
-    return render_template('form_prato.html')
-
 
 @app.route("/pedido", methods=["POST"])
 def pedido():
@@ -158,8 +205,6 @@ def pedido():
     # fallback em caso de erro
     return redirect(url_for('escolha_tipo'))
 
-
-
 def calcular_preco_marmita(marmita):
     tamanho = marmita.get('tamanho', '')
     adicionais_str = marmita.get('adicionais', '')
@@ -186,8 +231,6 @@ def calcular_valor_total_multiplo(marmitas):
         total += valor
     return round(total, 2)
 
-
-
 def calcular_valor_total(prato):
     adicionais_str = prato.get('adicionais', '')
     adicionais = [a.strip() for a in adicionais_str.split(',') if a.strip()]
@@ -196,6 +239,42 @@ def calcular_valor_total(prato):
     for adicional in adicionais:
         valor += PRECOS['prato']['adicionais'].get(adicional, 0)
     return round(valor, 2)
+
+@app.route('/cardapio')
+def get_cardapio():
+    return jsonify({
+        "marmita": {
+            "tamanhos": PRECOS['marmita']['tamanhos'],
+            "carnes": PRECOS['marmita'].get("carnes", []),
+            "adicionais": PRECOS['marmita']['adicionais']
+        },
+        "prato": {
+            "base": PRECOS['prato']['base'],
+            "carnes": PRECOS['prato'].get("carnes", []),
+            "adicionais": PRECOS['prato']['adicionais']
+        }
+    })
+
+
+
+@app.route('/salvar_cardapio', methods=['POST'])
+def salvar_cardapio():
+    data = request.get_json()
+
+    # Atualiza os valores de marmita
+    PRECOS['marmita']['tamanhos'] = data['marmita']['tamanhos']
+    PRECOS['marmita']['adicionais'] = data['marmita']['adicionais']
+    PRECOS['marmita']['carnes'] = data['marmita'].get('carnes', [])
+
+    # Atualiza os valores de prato
+    PRECOS['prato']['base'] = data['prato']['base']
+    PRECOS['prato']['adicionais'] = data['prato']['adicionais']
+    PRECOS['prato']['carnes'] = data['prato'].get('carnes', [])
+
+    salvar_precos(PRECOS)
+    return jsonify({"status": "sucesso"})
+
+
 
 
 

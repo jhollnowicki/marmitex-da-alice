@@ -1,0 +1,42 @@
+{
+  "marmita": {
+    "tamanhos": {
+      "mini": 15,
+      "media": 18,
+      "grande": 20,
+      "executiva": 25,
+      "top3": 28
+    },
+    "adicionais": {
+      "Almondegas": 7,
+      "Bife Grelhado": 7,
+      "Peito de Frango a Milanesa": 7,
+      "Strogonoff de Frango": 7,
+      "Tilapia": 7
+    },
+    "carnes": [
+      "Almondegas",
+      "Bife Grelhado",
+      "Peito de Frango a Milanesa",
+      "Strogonoff de Frango",
+      "Tilapia"
+    ]
+  },
+  "prato": {
+    "base": 19.9,
+    "adicionais": {
+      "Almondegas": 7,
+      "Bife Grelhado": 7,
+      "Peito de Frango a Milanesa": 7,
+      "Strogonoff de Frango": 7,
+      "Tilapia": 7
+    },
+    "carnes": [
+      "Almondegas",
+      "Bife Grelhado",
+      "Peito de Frango a Milanesa",
+      "Strogonoff de Frango",
+      "Tilapia"
+    ]
+  }
+}

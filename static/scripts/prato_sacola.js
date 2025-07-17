@@ -4,6 +4,53 @@ document.addEventListener('DOMContentLoaded', () => {
   let pratos = [];
   let index = 0;
 
+  carregarCardapio();
+
+  async function carregarCardapio() {
+    try {
+      const res = await fetch("/cardapio");
+      const data = await res.json();
+      
+      const carnes = data.prato.carnes || [];  // ✅ corrigido aqui
+      const adicionais = Object.keys(data.prato.adicionais || {});
+
+      const divCarnes = document.getElementById("carne");
+      const divAdicionais = document.getElementById("adicionais");
+
+      // Preenche carnes
+      divCarnes.innerHTML = "";
+      carnes.forEach(carne => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "btn-option";
+        btn.dataset.value = carne;
+        btn.textContent = carne;
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#carne .btn-option").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+        divCarnes.appendChild(btn);
+      });
+
+      // Preenche adicionais
+      divAdicionais.innerHTML = "";
+      adicionais.forEach(adc => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "btn-option";
+        btn.dataset.value = adc;
+        btn.textContent = adc;
+        btn.addEventListener("click", () => {
+          btn.classList.toggle("active");
+        });
+        divAdicionais.appendChild(btn);
+      });
+
+    } catch (err) {
+      console.error("Erro ao carregar cardápio:", err);
+    }
+  }
+
   function getSelectedAdicionais() {
     const buttons = document.querySelectorAll('#adicionais .btn-option.active');
     return Array.from(buttons).map(btn => btn.dataset.value);
@@ -29,14 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
     div.innerHTML = `
       <button type="button" class="absolute top-2 right-2 text-red-600 font-bold text-lg" title="Remover item">&times;</button>
       <p><strong>Base:</strong> ${prato.base}</p>
-      ${prato.adicionais.length > 0 ? `<p><strong>Carne:</strong> ${prato.adicionais.join(', ')}</p>` : ""}
+      ${prato.adicionais.length > 0 ? `<p><strong>Adicionais:</strong> ${prato.adicionais.join(', ')}</p>` : ""}
       <p><strong>Observações:</strong> ${prato.observacoes || "Nenhuma"}</p>
       <input type="hidden" name="pratos[${idx}][base]" value="${prato.base}">
       <input type="hidden" name="pratos[${idx}][adicionais]" value="${prato.adicionais.join(", ")}">
       <input type="hidden" name="pratos[${idx}][observacoes]" value="${prato.observacoes}">
     `;
 
-    // Remoção
     div.querySelector('button').addEventListener('click', () => {
       pratos.splice(idx, 1);
       renderSacola();
@@ -74,17 +120,5 @@ document.addEventListener('DOMContentLoaded', () => {
     clearAdicionais();
     clearCarne();
     document.getElementById("observacoes").value = "";
-  });
-
-  // Botões de seleção
-  document.querySelectorAll(".btn-option").forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.closest('#carne')) {
-        document.querySelectorAll('#carne .btn-option').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      } else {
-        btn.classList.toggle('active');
-      }
-    });
   });
 });

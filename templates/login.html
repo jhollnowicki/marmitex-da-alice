@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Login - Marmitex da Alice</title>
@@ -14,20 +15,23 @@
     }
   </style>
 </head>
+
 <body class="min-h-screen flex items-center justify-center px-4 text-black">
 
-  <form method="POST" action="/login" class="bg-white/40 backdrop-blur-md rounded-xl p-6 sm:p-8 w-full max-w-sm shadow-lg z-10">
+  <form method="POST" action="/login"
+    class="bg-white/40 backdrop-blur-md rounded-xl p-6 sm:p-8 w-full max-w-sm shadow-lg z-10">
     <h2 class="text-center font-bold text-base sm:text-lg mb-4">🍛 MARMITEX DA ALICE 🍛</h2>
 
     {% if erro %}
-      <p class="text-red-600 text-sm mb-3 text-center font-semibold">{{ erro }}</p>
+    <p class="text-red-600 text-sm mb-4 text-center font-semibold">{{ erro }}</p>
     {% endif %}
 
+
     <label class="block mb-1 text-sm font-bold">Usuário:</label>
-    <input type="text" name="usuario" required class="w-full p-2 border border-gray-300 rounded mb-3 text-sm">
+    <input type="text" name="usuario" required class="w-full p-2 border border-gray-300 rounded mb-3 text-sm font-semibold">
 
     <label class="block mb-1 text-sm font-bold">Senha:</label>
-    <input type="password" name="senha" required class="w-full p-2 border border-gray-300 rounded mb-4 text-sm">
+    <input type="password" name="senha" required class="w-full p-2 border border-gray-300 rounded mb-4 text-sm font-semibold">
 
     <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold w-full py-2 rounded text-sm">
       Entrar
@@ -35,4 +39,5 @@
   </form>
 
 </body>
+
 </html>

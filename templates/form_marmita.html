@@ -31,10 +31,6 @@
       color: white;
       border-color: #f50b0b;
     }
-
-    .tag {
-      @apply px-2 py-1 bg-red-100 text-red-700 text-sm rounded;
-    }
   </style>
 </head>
 
@@ -43,7 +39,6 @@
     class="bg-white/30 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-lg w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[40%] max-w-2xl space-y-6 relative z-10 text-[15px] sm:text-[16px]">
 
     <input type="hidden" name="tipo_formulario" value="marmita">
-
     <h1 class="text-xl sm:text-2xl font-bold text-center text-black">Pedido - Marmita</h1>
 
     <!-- Tipo de pedido -->
@@ -72,40 +67,34 @@
 
     <!-- Escolha da Marmita -->
     <div id="marmita-form" class="space-y-4">
+      <!-- Tamanhos dinâmicos -->
       <div>
         <label class="block font-semibold">Tamanho da Marmita:</label>
         <div class="flex flex-wrap gap-2 mt-1" id="tamanhos">
-          <button type="button" class="btn-option" data-value="Mini">Mini</button>
-          <button type="button" class="btn-option" data-value="Media">Média</button>
-          <button type="button" class="btn-option" data-value="Grande">Grande</button>
-          <button type="button" class="btn-option" data-value="Top 3">Top 3</button>
-          <button type="button" class="btn-option" data-value="Executivo">Executivo</button>
+          <!-- JS insere aqui -->
         </div>
       </div>
 
+      <!-- Carnes dinâmicas -->
       <div>
         <label class="block font-semibold">Tipo de Carne:</label>
         <div class="flex flex-wrap gap-2 mt-1" id="carnes">
-          <button type="button" class="btn-option" data-value="Strogonoff de Frango">Strogonoff de Frango</button>
-          <button type="button" class="btn-option" data-value="Bife grelhado">Bife grelhado</button>
-          <button type="button" class="btn-option" data-value="Filé de peito à milanesa">Filé à milanesa</button>
-          <button type="button" class="btn-option" data-value="Linguiça">Linguiça</button>
+          <!-- JS insere aqui -->
         </div>
       </div>
 
+      <!-- Adicionais dinâmicos -->
       <div>
         <label class="block font-semibold">Adicionais:</label>
         <div class="flex flex-wrap gap-2 mt-1" id="adicionais">
-          <button type="button" class="btn-option" data-value="Strogonoff de Frango">Strogonoff de Frango</button>
-          <button type="button" class="btn-option" data-value="Bife grelhado">Bife grelhado</button>
-          <button type="button" class="btn-option" data-value="Filé de peito à milanesa">Filé à milanesa</button>
-          <button type="button" class="btn-option" data-value="Linguiça">Linguiça</button>
+          <!-- JS insere aqui -->
         </div>
       </div>
 
+      <!-- Observações -->
       <div>
         <label class="block font-semibold">Observações:</label>
-        <textarea id="observacoes" class="w-full border rounded px-3 py-2 mt-1 text-sm"
+        <textarea name="observacoes" id="observacoes" class="w-full border rounded px-3 py-2 mt-1 text-sm"
           placeholder="Ex: sem salada, com ovo..."></textarea>
       </div>
     </div>
@@ -116,7 +105,7 @@
       + Adicionar Marmita
     </button>
 
-    <!-- Sacola de pedidos -->
+    <!-- Sacola -->
     <div id="sacola" class="space-y-3 pt-4"></div>
 
     <button type="submit"
