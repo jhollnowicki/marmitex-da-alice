@@ -183,7 +183,10 @@ def pedido():
             total += preco
         dados["marmitas"] = marmitas
         dados["valor_total"] = round(total, 2)
-        return render_template("recibo_marmita.html", **dados, PRECOS=PRECOS)
+        os.makedirs("pedidos", exist_ok=True)
+        with open(f"pedidos/pedidos_{pedido_id}.json", "w", encoding="utf-8") as f:
+            json.dump(dados, f, indent=2, ensure_ascii=False)
+        return redirect(url_for("recibo_marmita", pedido_id=pedido_id))
 
     elif tipo_formulario == "prato":
         pratos = []
@@ -200,7 +203,10 @@ def pedido():
             total += preco
         dados["pratos"] = pratos
         dados["valor_total"] = round(total, 2)
-        return render_template("recibo_prato.html", **dados, PRECOS=PRECOS)
+        os.makedirs("pedidos", exist_ok=True)
+        with open(f"pedidos/pedidos_{pedido_id}.json", "w", encoding="utf-8") as f:
+            json.dump(dados, f, indent=2, ensure_ascii=False)
+        return redirect(url_for("recibo_prato", pedido_id=pedido_id))
 
     # fallback em caso de erro
     return redirect(url_for('escolha_tipo'))
@@ -274,9 +280,23 @@ def salvar_cardapio():
     salvar_precos(PRECOS)
     return jsonify({"status": "sucesso"})
 
+@app.route("/recibo_marmita/<int:pedido_id>")
+def recibo_marmita(pedido_id):
+    try:
+        with open(f"pedidos/pedidos_{pedido_id}.json", "r", encoding="utf-8") as f:
+            dados = json.load(f)
+    except FileNotFoundError:
+        return "Pedido não encontrado", 404
+    return render_template("recibo_marmita.html", **dados, PRECOS=PRECOS)
 
-
-
+@app.route("/recibo_prato/<int:pedido_id>")
+def recibo_prato(pedido_id):
+    try:
+        with open(f"pedidos/pedidos_{pedido_id}.json", "r", encoding="utf-8") as f:
+            dados = json.load(f)
+    except FileNotFoundError:
+        return "Pedido não encontrado", 404
+    return render_template("recibo_prato.html", **dados, PRECOS=PRECOS)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
