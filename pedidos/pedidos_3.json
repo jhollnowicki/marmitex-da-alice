@@ -1,0 +1,18 @@
+{
+  "pedido_id": 3,
+  "tipo_pedido": "Retirada",
+  "nome": "jhonatan",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "17/07/2025 21:00",
+  "valor_total": 25.0,
+  "marmitas": [
+    {
+      "tamanho": "executiva",
+      "carne": "Almondegas",
+      "adicionais": "",
+      "observacoes": "",
+      "preco": 25
+    }
+  ]
+}

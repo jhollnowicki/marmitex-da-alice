@@ -1,0 +1,18 @@
+{
+  "pedido_id": 2,
+  "tipo_pedido": "Entrega",
+  "nome": "jhonatta",
+  "telefone": "41987999296",
+  "endereco": "RUA PONTAL DO PARANA",
+  "data_hora": "17/07/2025 20:56",
+  "valor_total": 39.0,
+  "marmitas": [
+    {
+      "tamanho": "executiva",
+      "carne": "Bife Grelhado",
+      "adicionais": "Bife Grelhado,Tilapia",
+      "observacoes": "asdasdasd",
+      "preco": 39
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "pedido_id": 4,
+  "tipo_pedido": null,
+  "nome": "asdasd",
+  "telefone": null,
+  "endereco": null,
+  "data_hora": "17/07/2025 21:00",
+  "valor_total": 26.9,
+  "pratos": [
+    {
+      "base": "Almondegas",
+      "adicionais": "Bife Grelhado",
+      "observacoes": "",
+      "preco": 26.9
+    }
+  ]
+}
