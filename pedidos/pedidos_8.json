@@ -1,0 +1,20 @@
+{
+  "pedido_id": 8,
+  "tipo_pedido": "Entrega",
+  "nome": "jhonatta",
+  "telefone": "41987762651",
+  "endereco": "rua pontal do parana 73",
+  "data_hora": "17/07/2025 22:04",
+  "valor_total": 27.0,
+  "forma_pagamento": "Dinheiro",
+  "troco_para": "100",
+  "marmitas": [
+    {
+      "tamanho": "grande",
+      "carne": "Bife Grelhado",
+      "adicionais": "Tilapia",
+      "observacoes": "",
+      "preco": 27
+    }
+  ]
+}

@@ -155,6 +155,9 @@ def pedido():
 
     tipo_formulario = request.form.get("tipo_formulario")
     pedido_id = gerar_numero_pedido()
+    forma_pagamento = request.form.get("forma_pagamento", "")
+    troco_para = request.form.get("troco_para", "")
+
 
     dados = {
         "pedido_id": pedido_id,
@@ -163,7 +166,10 @@ def pedido():
         "telefone": request.form.get("telefone"),
         "endereco": request.form.get("endereco"),
         "data_hora": datetime.now().strftime("%d/%m/%Y %H:%M"),
-        "valor_total": 0.0
+        "valor_total": 0.0,
+        "forma_pagamento": forma_pagamento,
+        "troco_para": troco_para
+
     }
 
     total = 0.0

@@ -1,0 +1,12 @@
+{
+  "pedido_id": 11,
+  "tipo_pedido": "Entrega",
+  "nome": "jhonatan",
+  "telefone": "41987999296",
+  "endereco": "",
+  "data_hora": "17/07/2025 22:08",
+  "valor_total": 0.0,
+  "forma_pagamento": "",
+  "troco_para": "",
+  "marmitas": []
+}

@@ -1,0 +1,25 @@
+{
+  "pedido_id": 6,
+  "tipo_pedido": "Entrega",
+  "nome": "juliana andressa",
+  "telefone": "41987762651",
+  "endereco": "RUA PONTAL DO PARANA",
+  "data_hora": "17/07/2025 21:58",
+  "valor_total": 54.0,
+  "marmitas": [
+    {
+      "tamanho": "grande",
+      "carne": "Strogonoff de Frango",
+      "adicionais": "Bife Grelhado",
+      "observacoes": "czxczx",
+      "preco": 27
+    },
+    {
+      "tamanho": "grande",
+      "carne": "Strogonoff de Frango",
+      "adicionais": "Bife Grelhado",
+      "observacoes": "",
+      "preco": 27
+    }
+  ]
+}

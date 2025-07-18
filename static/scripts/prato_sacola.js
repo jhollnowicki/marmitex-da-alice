@@ -5,13 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let index = 0;
 
   carregarCardapio();
+  configurarPagamento();
 
   async function carregarCardapio() {
     try {
       const res = await fetch("/cardapio");
       const data = await res.json();
-      
-      const carnes = data.prato.carnes || [];  // ✅ corrigido aqui
+
+      const carnes = data.prato.carnes || [];
       const adicionais = Object.keys(data.prato.adicionais || {});
 
       const divCarnes = document.getElementById("carne");
@@ -121,4 +122,22 @@ document.addEventListener('DOMContentLoaded', () => {
     clearCarne();
     document.getElementById("observacoes").value = "";
   });
+
+  function configurarPagamento() {
+    const botoesPagamento = document.querySelectorAll("#pagamento-opcoes .btn-option");
+    const inputForma = document.getElementById("forma_pagamento");
+    const campoTroco = document.getElementById("campo-troco");
+
+    botoesPagamento.forEach(botao => {
+      botao.addEventListener("click", () => {
+        botoesPagamento.forEach(b => b.classList.remove("active"));
+        botao.classList.add("active");
+
+        const valor = botao.dataset.value;
+        inputForma.value = valor;
+
+        campoTroco.style.display = valor === "Dinheiro" ? "block" : "none";
+      });
+    });
+  }
 });

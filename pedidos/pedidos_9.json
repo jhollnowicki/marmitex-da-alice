@@ -1,0 +1,20 @@
+{
+  "pedido_id": 9,
+  "tipo_pedido": "Retirada",
+  "nome": "asfas",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "17/07/2025 22:05",
+  "valor_total": 20.0,
+  "forma_pagamento": "Dinheiro",
+  "troco_para": "100.00",
+  "marmitas": [
+    {
+      "tamanho": "grande",
+      "carne": "Bife Grelhado",
+      "adicionais": "",
+      "observacoes": "",
+      "preco": 20
+    }
+  ]
+}

@@ -1,9 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
-  configurarFormulario();
-});
-
 let sacola = [];
 const sacolaDiv = document.getElementById("sacola");
+
+document.addEventListener("DOMContentLoaded", () => {
+  configurarFormulario();
+  configurarPagamento();
+});
 
 function configurarFormulario() {
   const tipoPedido = document.getElementById("tipo_pedido");
@@ -34,6 +35,27 @@ function configurarFormulario() {
   });
 }
 
+function configurarPagamento() {
+  const botoesPagamento = document.querySelectorAll("#pagamento-opcoes .btn-option");
+  const inputForma = document.getElementById("forma_pagamento");
+  const campoTroco = document.getElementById("campo-troco");
+
+  botoesPagamento.forEach(botao => {
+    botao.addEventListener("click", () => {
+      // Destaca o botão clicado
+      botoesPagamento.forEach(b => b.classList.remove("active"));
+      botao.classList.add("active");
+
+      // Define o valor no input hidden
+      const valor = botao.dataset.value;
+      inputForma.value = valor;
+
+      // Exibe campo de troco apenas para dinheiro
+      campoTroco.style.display = valor === "Dinheiro" ? "block" : "none";
+    });
+  });
+}
+
 function pegarSelecionado(id) {
   const btn = document.querySelector(`#${id} .btn-option.active`);
   return btn ? btn.dataset.value : null;
@@ -41,7 +63,7 @@ function pegarSelecionado(id) {
 
 function pegarSelecionados(id) {
   const btns = document.querySelectorAll(`#${id} .btn-option.active`);
-  return [...btns].map((b) => b.dataset.value);
+  return [...btns].map(b => b.dataset.value);
 }
 
 function renderizarSacola() {
@@ -56,11 +78,13 @@ function renderizarSacola() {
       <p><strong>Carne:</strong> ${item.carne}</p>
       <p><strong>Adicionais:</strong> ${item.adicionais.join(", ") || "Nenhum"}</p>
       <p><strong>Obs:</strong> ${item.observacoes || "Nenhuma"}</p>
+
       <input type="hidden" name="marmitas[${index}][tamanho]" value="${item.tamanho}">
       <input type="hidden" name="marmitas[${index}][carne]" value="${item.carne}">
       <input type="hidden" name="marmitas[${index}][adicionais]" value="${item.adicionais.join(',')}">
       <input type="hidden" name="marmitas[${index}][observacoes]" value="${item.observacoes}">
-      <button class="text-red-600 font-bold mt-1" onclick="removerMarmita(${index})">Remover</button>
+
+      <button type="button" class="text-red-600 font-bold mt-1" onclick="removerMarmita(${index})">Remover</button>
     `;
     sacolaDiv.appendChild(div);
   });
@@ -72,6 +96,6 @@ function removerMarmita(index) {
 }
 
 function limparSelecoes() {
-  document.querySelectorAll(".btn-option").forEach((b) => b.classList.remove("active"));
+  document.querySelectorAll(".btn-option").forEach(b => b.classList.remove("active"));
   document.getElementById("observacoes").value = "";
 }

@@ -1,0 +1,25 @@
+{
+  "pedido_id": 7,
+  "tipo_pedido": "Retirada",
+  "nome": "asfsa",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "17/07/2025 22:00",
+  "valor_total": 52.0,
+  "marmitas": [
+    {
+      "tamanho": "executiva",
+      "carne": "Almondegas",
+      "adicionais": "Strogonoff de Frango",
+      "observacoes": "",
+      "preco": 32
+    },
+    {
+      "tamanho": "grande",
+      "carne": "Tilapia",
+      "adicionais": "",
+      "observacoes": "",
+      "preco": 20
+    }
+  ]
+}

@@ -89,3 +89,13 @@ function configurarCamposCliente() {
     camposEntrega.style.display = valor === "Entrega" ? "block" : "none";
   });
 }
+// Formatar o campo de troco com R$ e duas casas decimais
+const trocoInput = document.querySelector('input[name="troco_para"]');
+if (trocoInput) {
+  trocoInput.addEventListener('input', () => {
+    let valor = trocoInput.value.replace(/[^\d]/g, ''); // remove tudo que não for número
+    valor = (parseFloat(valor) / 100).toFixed(2); // converte para float e fixa 2 casas
+    trocoInput.value = `R$ ${valor.replace('.', ',')}`; // formata com R$ e vírgula
+  });
+}
+

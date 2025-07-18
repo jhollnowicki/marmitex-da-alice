@@ -1,0 +1,20 @@
+{
+  "pedido_id": 10,
+  "tipo_pedido": "Entrega",
+  "nome": "juliana andressa",
+  "telefone": "41987762651",
+  "endereco": "rua pontal do parana 73",
+  "data_hora": "17/07/2025 22:07",
+  "valor_total": 27.0,
+  "forma_pagamento": "Dinheiro",
+  "troco_para": "R$ 100,00",
+  "marmitas": [
+    {
+      "tamanho": "grande",
+      "carne": "Bife Grelhado",
+      "adicionais": "Bife Grelhado",
+      "observacoes": "",
+      "preco": 27
+    }
+  ]
+}

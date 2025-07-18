@@ -16,9 +16,7 @@
 
     .print-area {
       background-color: rgba(255, 255, 255, 0.39);
-      /* Fundo opaco */
       backdrop-filter: blur(8px);
-      /* Desfoque de fundo */
       border-radius: 16px;
       padding: 24px;
       width: 100%;
@@ -128,20 +126,40 @@
       <hr class="border-t border-gray-300 my-2">
 
       <!-- Totais -->
-      <div class="text-sm space-y-1">
-        <p class="font-semibold">Itens do pedido <span class="float-right">R$ {{ '%.2f' | format(valor_total) }}</span>
-        </p>
-        <p class="font-semibold">Taxa de entrega <span class="float-right">R$ 0,00</span></p>
-        <p class="font-bold">Subtotal <span class="float-right font-semibold">R$ {{ '%.2f' | format(valor_total)
-            }}</span></p>
-      </div>
+      <table style="width: 100%; font-size: 12px; margin-top: 10px;">
+        <tr>
+          <td><strong>Itens do pedido</strong></td>
+          <td style="text-align: right;">R$ {{ '%.2f' | format(valor_total) }}</td>
+        </tr>
+        <tr>
+          <td><strong>Taxa de entrega</strong></td>
+          <td style="text-align: right;">R$ 0,00</td>
+        </tr>
+        <tr>
+          <td><strong>Subtotal</strong></td>
+          <td style="text-align: right;"><strong>R$ {{ '%.2f' | format(valor_total) }}</strong></td>
+        </tr>
+      </table>
 
-      <hr class="border-t border-gray-300 my-2">
+      <!-- Forma de pagamento -->
+      <table style="width: 100%; font-size: 12px; margin-top: 10px;">
+        <tr>
+          <td><strong>Forma de pagamento</strong></td>
+          <td style="text-align: right;">{{ forma_pagamento }}</td>
+        </tr>
+        {% if forma_pagamento == "Dinheiro" and troco_para %}
+        <tr>
+          <td><strong>Troco para</strong></td>
+          <td style="text-align: right;"> {{ troco_para }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+          <td></td>
+          <td style="text-align: right;">R$ {{ '%.2f' | format(valor_total) }}</td>
+        </tr>
+      </table>
 
-      <!-- Forma de Pagamento -->
-      <p class="font-semibold mb-1">Forma de pagamento</p>
-      <p>Pix <span class="float-right">R$ {{ '%.2f' | format(valor_total) }}</span></p>
-
+      <!-- Observação -->
       {% if obs %}
       <hr class="border-t border-gray-300 my-2">
       <p class="font-semibold">Observação</p>
