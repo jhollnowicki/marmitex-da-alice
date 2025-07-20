@@ -1,12 +1,12 @@
 {
-  "pedido_id": 12,
-  "tipo_pedido": "Entrega",
-  "nome": "juliana andressa",
-  "telefone": "41987762651",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 12:30",
+  "pedido_id": 19,
+  "tipo_pedido": "Retirada",
+  "nome": "jhonatan",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "20/07/2025 12:53",
   "valor_total": 20.0,
-  "forma_pagamento": "",
+  "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {

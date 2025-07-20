@@ -1,20 +1,20 @@
 {
-  "pedido_id": 13,
+  "pedido_id": 37,
   "tipo_pedido": "Entrega",
-  "nome": "juliana andressa",
+  "nome": "jhonatan",
   "telefone": "41987999296",
   "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 12:34",
-  "valor_total": 53.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "50",
+  "data_hora": "20/07/2025 14:13",
+  "valor_total": 55.0,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "media",
-      "carne": "Tilapia",
+      "tamanho": "grande",
+      "carne": "Bife Grelhado",
       "adicionais": "Almondegas,Bife Grelhado,Peito de Frango a Milanesa,Strogonoff de Frango,Tilapia",
       "observacoes": "",
-      "preco": 53
+      "preco": 55
     }
   ],
   "troco": 0

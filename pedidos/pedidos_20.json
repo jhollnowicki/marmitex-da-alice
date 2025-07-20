@@ -1,13 +1,13 @@
 {
-  "pedido_id": 11,
+  "pedido_id": 20,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
+  "nome": "jhonatta",
   "telefone": "41987762651",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 12:29",
+  "endereco": "RUA PONTAL DO PARANA",
+  "data_hora": "20/07/2025 12:59",
   "valor_total": 27.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "50",
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
@@ -17,5 +17,5 @@
       "preco": 27
     }
   ],
-  "troco": 23.0
+  "troco": 0
 }

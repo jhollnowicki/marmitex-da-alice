@@ -1,0 +1,21 @@
+{
+  "pedido_id": 46,
+  "tipo_pedido": "Retirada",
+  "nome": "jhonatan",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "20/07/2025 17:13",
+  "valor_total": 20.0,
+  "forma_pagamento": "Dinheiro",
+  "troco_para": "60",
+  "marmitas": [
+    {
+      "tamanho": "grande",
+      "carne": "Bife Grelhado",
+      "adicionais": "",
+      "observacoes": "",
+      "preco": 20
+    }
+  ],
+  "troco": 40.0
+}

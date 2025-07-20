@@ -1,12 +1,12 @@
 {
-  "pedido_id": 15,
+  "pedido_id": 26,
   "tipo_pedido": "Entrega",
-  "nome": "juliana andressa",
+  "nome": "jhonatta",
   "telefone": "41987999296",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "20/07/2025 12:37",
+  "endereco": "RUA PONTAL DO PARANA 73",
+  "data_hora": "20/07/2025 13:21",
   "valor_total": 25.0,
-  "forma_pagamento": "",
+  "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {

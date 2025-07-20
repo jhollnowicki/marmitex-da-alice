@@ -1,0 +1,20 @@
+{
+  "pedido_id": 45,
+  "tipo_pedido": null,
+  "nome": "jhonatta",
+  "telefone": null,
+  "endereco": null,
+  "data_hora": "20/07/2025 17:10",
+  "valor_total": 54.9,
+  "forma_pagamento": "Dinheiro",
+  "troco_para": "60",
+  "pratos": [
+    {
+      "base": "Almondegas",
+      "adicionais": "Almondegas, Bife Grelhado, Peito de Frango a Milanesa, Strogonoff de Frango, Tilapia",
+      "observacoes": "",
+      "preco": 54.9
+    }
+  ],
+  "troco": 5.1
+}

@@ -48,14 +48,16 @@
 
       .print-area {
         position: absolute;
-        left: 5mm;
+        left: 4mm;
+        right: 4mm;
         top: 0;
         width: 48mm;
-        font-size: 11px;
+        font-size: 10px;
         padding: 0;
         margin: 0;
         text-align: left;
         background-color: white !important;
+        font-weight: bold;
       }
 
       .no-print {
@@ -67,56 +69,60 @@
 
 <body class="min-h-screen flex items-center justify-center px-4 py-10 text-black">
   <div class="flex flex-col items-center space-y-6">
-
-    <!-- Recibo -->
-    <div class="print-area w-full max-w-md text-[14px] leading-relaxed">
-      <div class="text-center font-bold text-red-600 text-lg mb-2">🍱 Marmitez da Alice 🍱</div>
+    <div class="print-area leading-relaxed">
+      <div class="text-center font-bold text-black text-lg mb-1">
+        Marmitex da Alice</div>
       <hr class="border-t border-gray-400 my-2">
 
       <!-- Cliente -->
-      <div class="mb-2 font-semibold">
-        <p class="font-bold">Cliente</p>
+      <div class="mb-2 font-bold">
+        <p class="font-bold">Cliente:</p>
         <p>Nome: {{ nome }}</p>
         <p>Telefone: {{ telefone }}</p>
       </div>
 
       <!-- Endereço -->
-      <div class="mb-2 font-semibold">
-        <p class="font-bold">Endereço de entrega</p>
+      <div class="mb-2 font-bold">
+        <p class="font-bold">Endereço de entrega:</p>
         <p>{{ endereco }}</p>
       </div>
 
       <!-- Data e Hora -->
-      <div class="mb-2 font-semibold">
-        <p class="font-bold">Itens do pedido</p>
+      <div class="mb-2 font-bold">
         <p>Data: {{ data_hora.split(" ")[0] }}</p>
         <p>Hora: {{ data_hora.split(" ")[1] }}</p>
+        <p class="font-bold">Itens do pedido:</p>
       </div>
 
       <hr class="border-t border-gray-400 my-2">
 
       <!-- Itens -->
-      <div class="mb-2">
-        <table class="w-full text-sm">
+      <div class="mb-2 font-bold">
+        <table class="w-full text-[10px] table-fixed">
           <thead>
-            <tr class="border-b border-gray-300">
-              <th class="text-left w-1/6">Qtd</th>
-              <th class="text-left w-4/6">Item</th>
-              <th class="text-right w-1/6">Preço</th>
+            <tr class="border-b border-gray-300 text-[10px]">
+              <th class="text-left w-[15%] pr-1">Qtd</th>
+              <th class="text-left w-[55%] pr-1">Item</th>
+              <th class="text-right w-[30%] pr-1">Preço</th>
             </tr>
           </thead>
           <tbody>
             {% for marmita in marmitas %}
-            <tr class="font-semibold align-top">
-              <td>1</td>
-              <td>
-                Marmita {{ marmita.tamanho }}<br>
-                <small>{{ marmita.carne }}</small>
+            <tr class="font-bold align-top">
+              <td class="px-1">1</td>
+              <td class="px-1">
+                <span class="font-bold">Marmita {{ marmita.tamanho }}</span><br>
+                <span class="text-[16px] print:text-[9px] font-bold leading-tight">
+                  {{ marmita.carne }}
+                </span>
                 {% if marmita.adicionais %}
-                <br><small>+ {{ marmita.adicionais }}</small>
+                <br>
+                <span class="text-[16px] print:text-[9px] font-bold leading-tight">
+                  + {{ marmita.adicionais }}
+                </span>
                 {% endif %}
               </td>
-              <td class="text-right">R$ {{ '%.2f' | format(marmita.preco) }}</td>
+              <td class="text-right px-1">R$ {{ '%.2f' | format(marmita.preco) }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -126,38 +132,41 @@
       <hr class="border-t border-gray-300 my-2">
 
       <!-- Totais -->
-      <table style="width: 100%; font-size: 12px; margin-top: 10px;">
+      <!-- Totais -->
+      <table class="w-full text-[16px] print:text-[9px] mt-2 leading-[1.4] print:leading-[1.3]">
         <tr>
-          <td><strong>Itens do pedido</strong></td>
-          <td style="text-align: right;">R$ {{ '%.2f' | format(valor_total) }}</td>
+          <td class="font-bold">Itens do pedido</td>
+          <td class="text-right pr-1">R$ {{ '%.2f' | format(valor_total) }}</td>
         </tr>
         <tr>
-          <td><strong>Taxa de entrega</strong></td>
-          <td style="text-align: right;">R$ 0,00</td>
+          <td class="font-bold">Taxa de entrega</td>
+          <td class="text-right pr-1">R$ 0,00</td>
         </tr>
         <tr>
-          <td><strong>Subtotal</strong></td>
-          <td style="text-align: right;"><strong>R$ {{ '%.2f' | format(valor_total) }}</strong></td>
+          <td class="font-bold">Subtotal</td>
+          <td class="text-right pr-1 font-bold">R$ {{ '%.2f' | format(valor_total) }}</td>
         </tr>
       </table>
 
+
       <!-- Forma de pagamento -->
-      <table style="width: 100%; font-size: 12px; margin-top: 10px;">
+      <table class="w-full text-[16px] print:text-[9px] mt-2 leading-tight">
         <tr>
           <td><strong>Forma de pagamento</strong></td>
-          <td style="text-align: right;">{{ forma_pagamento }}</td>
+          <td class="text-right pr-1">{{ forma_pagamento }}</td>
         </tr>
         {% if forma_pagamento == "Dinheiro" and troco_para %}
         <tr>
-          <td><strong>Troco para</strong></td>
-          <td style="text-align: right;"> {{ troco_para }}</td>
+          <td><strong>Troco para:</strong></td>
+          <td class="text-right pr-1">R$ {{ '%.2f' | format(troco_para|float) }}</td>
         </tr>
         {% endif %}
         <tr>
-          <td></td>
-          <td style="text-align: right;">R$ {{ '%.2f' | format(valor_total) }}</td>
+          <td><strong>Troco:</strong></td>
+          <td class="text-right pr-1">R$ {{ '%.2f' | format(valor_total) }}</td>
         </tr>
       </table>
+
 
       <!-- Observação -->
       {% if obs %}

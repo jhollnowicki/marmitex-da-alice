@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   carregarCardapio();
   configurarBotoes();
   configurarCamposCliente();
+  configurarPagamento();
 });
 
 async function carregarCardapio() {
@@ -77,7 +78,6 @@ function capitalizar(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-// Mostrar/esconder campos com base no tipo de pedido
 function configurarCamposCliente() {
   const tipoPedido = document.getElementById("tipo_pedido");
   const camposCliente = document.getElementById("campos-cliente");
@@ -89,13 +89,65 @@ function configurarCamposCliente() {
     camposEntrega.style.display = valor === "Entrega" ? "block" : "none";
   });
 }
-// Formatar o campo de troco com R$ e duas casas decimais
-const trocoInput = document.querySelector('input[name="troco_para"]');
-if (trocoInput) {
-  trocoInput.addEventListener('input', () => {
-    let valor = trocoInput.value.replace(/[^\d]/g, ''); // remove tudo que não for número
-    valor = (parseFloat(valor) / 100).toFixed(2); // converte para float e fixa 2 casas
-    trocoInput.value = `R$ ${valor.replace('.', ',')}`; // formata com R$ e vírgula
-  });
-}
 
+function configurarPagamento() {
+  const pagamentoBtns = document.querySelectorAll('#pagamento-opcoes .btn-option');
+  const formaPagamentoInput = document.getElementById('forma_pagamento');
+  const campoTroco = document.getElementById('campo-troco');
+  const trocoParaInput = document.querySelector('input[name="troco_para"]');
+
+  pagamentoBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      pagamentoBtns.forEach(b => b.classList.remove('active', 'bg-red-600', 'text-white'));
+      this.classList.add('active', 'bg-red-600', 'text-white');
+
+      const valor = this.getAttribute('data-value');
+      formaPagamentoInput.value = valor;
+
+      if (valor === 'Dinheiro') {
+        campoTroco.style.display = 'block';
+      } else {
+        campoTroco.style.display = 'none';
+        trocoParaInput.value = 'R$ 0,00';
+      }
+    });
+  });
+
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    if (!formaPagamentoInput.value) {
+      e.preventDefault();
+      alert("Selecione uma forma de pagamento.");
+    }
+  });
+
+  // Formatação do campo de troco
+  if (trocoParaInput) {
+    const formatarMoeda = (valor) => {
+      let num = valor.replace(/\D/g, "");
+      if (num === "") num = "0";
+      num = (parseInt(num, 10) / 100).toFixed(2);
+      return "R$ " + num.replace(".", ",");
+    };
+
+    trocoParaInput.addEventListener("input", () => {
+      const cursorPos = trocoParaInput.selectionStart;
+      trocoParaInput.value = formatarMoeda(trocoParaInput.value);
+      trocoParaInput.setSelectionRange(trocoParaInput.value.length, trocoParaInput.value.length);
+    });
+
+    trocoParaInput.addEventListener("focus", () => {
+      if (trocoParaInput.value.trim() === "") {
+        trocoParaInput.value = "R$ 0,00";
+      }
+    });
+
+    trocoParaInput.addEventListener("blur", () => {
+      if (trocoParaInput.value.trim() === "") {
+        trocoParaInput.value = "R$ 0,00";
+      }
+    });
+
+    trocoParaInput.value = "R$ 0,00";
+  }
+}

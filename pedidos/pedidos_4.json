@@ -1,17 +1,28 @@
 {
   "pedido_id": 4,
-  "tipo_pedido": null,
-  "nome": "asdasd",
-  "telefone": null,
-  "endereco": null,
-  "data_hora": "17/07/2025 21:00",
-  "valor_total": 26.9,
-  "pratos": [
+  "tipo_pedido": "Entrega",
+  "nome": "jhonatan",
+  "telefone": "41987762651",
+  "endereco": "rua pontal do parana 73",
+  "data_hora": "20/07/2025 12:11",
+  "valor_total": 54.0,
+  "forma_pagamento": "Dinheiro",
+  "troco_para": "100",
+  "marmitas": [
     {
-      "base": "Almondegas",
-      "adicionais": "Bife Grelhado",
+      "tamanho": "grande",
+      "carne": "Strogonoff de Frango",
+      "adicionais": "Strogonoff de Frango",
+      "observacoes": "Sem feijao",
+      "preco": 27
+    },
+    {
+      "tamanho": "grande",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": "Peito de Frango a Milanesa",
       "observacoes": "",
-      "preco": 26.9
+      "preco": 27
     }
-  ]
+  ],
+  "troco": 46.0
 }

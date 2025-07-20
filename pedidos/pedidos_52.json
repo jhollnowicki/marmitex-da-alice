@@ -1,0 +1,20 @@
+{
+  "pedido_id": 52,
+  "tipo_pedido": null,
+  "nome": "jhonatan",
+  "telefone": null,
+  "endereco": null,
+  "data_hora": "20/07/2025 17:22",
+  "valor_total": 26.9,
+  "forma_pagamento": "Dinheiro",
+  "troco_para": "35",
+  "pratos": [
+    {
+      "base": "Almondegas",
+      "adicionais": "Strogonoff de Frango",
+      "observacoes": "",
+      "preco": 26.9
+    }
+  ],
+  "troco": 8.1
+}

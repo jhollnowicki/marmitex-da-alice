@@ -1,21 +1,21 @@
 {
-  "pedido_id": 6,
+  "pedido_id": 22,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatta",
+  "nome": "jhonatan",
   "telefone": "41987762651",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "20/07/2025 12:14",
+  "endereco": "RUA PONTAL DO PARANA 73",
+  "data_hora": "20/07/2025 13:04",
   "valor_total": 25.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "100",
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "media",
-      "carne": "Tilapia",
+      "carne": "Bife Grelhado",
       "adicionais": "Bife Grelhado",
       "observacoes": "",
       "preco": 25
     }
   ],
-  "troco": 75.0
+  "troco": 0
 }

@@ -1,21 +1,21 @@
 {
-  "pedido_id": 11,
+  "pedido_id": 34,
   "tipo_pedido": "Entrega",
   "nome": "jhonatan",
-  "telefone": "41987762651",
+  "telefone": "41987999296",
   "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 12:29",
-  "valor_total": 27.0,
+  "data_hora": "20/07/2025 13:57",
+  "valor_total": 34.0,
   "forma_pagamento": "Dinheiro",
-  "troco_para": "50",
+  "troco_para": "60",
   "marmitas": [
     {
       "tamanho": "grande",
       "carne": "Bife Grelhado",
-      "adicionais": "Bife Grelhado",
+      "adicionais": "Bife Grelhado,Strogonoff de Frango",
       "observacoes": "",
-      "preco": 27
+      "preco": 34
     }
   ],
-  "troco": 23.0
+  "troco": 26.0
 }

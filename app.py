@@ -32,7 +32,7 @@ def login():
     if request.method == 'POST':
         usuario = request.form['usuario']
         senha = request.form['senha']
-        if usuario == 'Bruno' and senha == "Bruno1234":
+        if usuario == 'Bruno' and senha == "1234":
             session['usuario'] = 'dono'
             return redirect(url_for('escolha_tipo'))
         
@@ -189,6 +189,18 @@ def pedido():
             total += preco
         dados["marmitas"] = marmitas
         dados["valor_total"] = round(total, 2)
+        if forma_pagamento == "Dinheiro" and troco_para:
+            try:
+                troco_para_float = float(troco_para.replace("R$", "").replace(".", "").replace(",", ".").strip())
+                troco = round(troco_para_float - total, 2)
+                if troco < 0:
+                    troco = 0
+            except ValueError:
+                troco = 0
+        else:
+            troco = 0
+        dados["troco"] = troco
+
         os.makedirs("pedidos", exist_ok=True)
         with open(f"pedidos/pedidos_{pedido_id}.json", "w", encoding="utf-8") as f:
             json.dump(dados, f, indent=2, ensure_ascii=False)
@@ -209,6 +221,18 @@ def pedido():
             total += preco
         dados["pratos"] = pratos
         dados["valor_total"] = round(total, 2)
+        if forma_pagamento == "Dinheiro" and troco_para:
+            try:
+                troco_para_float = float(troco_para.replace("R$", "").replace(".", "").replace(",", ".").strip())
+                troco = round(troco_para_float - total, 2)
+                if troco < 0:
+                    troco = 0
+            except ValueError:
+                troco = 0
+        else:
+            troco = 0
+        dados["troco"] = troco
+        
         os.makedirs("pedidos", exist_ok=True)
         with open(f"pedidos/pedidos_{pedido_id}.json", "w", encoding="utf-8") as f:
             json.dump(dados, f, indent=2, ensure_ascii=False)
@@ -293,7 +317,31 @@ def recibo_marmita(pedido_id):
             dados = json.load(f)
     except FileNotFoundError:
         return "Pedido não encontrado", 404
-    return render_template("recibo_marmita.html", **dados, PRECOS=PRECOS)
+
+    # Conversão segura
+    # Dentro de recibo_marmita
+    if dados.get("forma_pagamento") == "Dinheiro" and dados.get("troco_para"):
+        try:
+            troco_para = float(str(dados["troco_para"]).replace("R$", "").replace(".", "").replace(",", ".").strip())
+        except ValueError:
+            troco_para = 0.0
+    else:
+        troco_para = 0.0
+
+    troco = float(dados.get("troco", 0.0))
+
+    # Remove duplicados antes de expandir
+    dados.pop("troco_para", None)
+    dados.pop("troco", None)
+
+    return render_template("recibo_marmita.html",
+        **dados,
+        PRECOS=PRECOS,
+        troco_para=troco_para,
+        troco=troco
+    )
+
+
 
 @app.route("/recibo_prato/<int:pedido_id>")
 def recibo_prato(pedido_id):
@@ -302,7 +350,27 @@ def recibo_prato(pedido_id):
             dados = json.load(f)
     except FileNotFoundError:
         return "Pedido não encontrado", 404
-    return render_template("recibo_prato.html", **dados, PRECOS=PRECOS)
+
+    # Calcular troco se necessário
+    if dados.get("forma_pagamento") == "Dinheiro" and dados.get("troco_para"):
+        try:
+            troco_para = float(str(dados["troco_para"]).replace("R$", "").replace(".", "").replace(",", ".").strip())
+        except ValueError:
+            troco_para = 0.0
+    else:
+        troco_para = 0.0
+
+    troco = float(dados.get("troco", 0.0))
+
+    dados.pop("troco_para", None)
+    dados.pop("troco", None)
+
+    return render_template("recibo_prato.html",
+        **dados,
+        PRECOS=PRECOS,
+        troco_para=troco_para,
+        troco=troco
+    )
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

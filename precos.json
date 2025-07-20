@@ -12,14 +12,18 @@
       "Bife Grelhado": 7,
       "Peito de Frango a Milanesa": 7,
       "Strogonoff de Frango": 7,
-      "Tilapia": 7
+      "Tilapia": 7,
+      "ovo": 3
     },
     "carnes": [
       "Almondegas",
       "Bife Grelhado",
       "Peito de Frango a Milanesa",
       "Strogonoff de Frango",
-      "Tilapia"
+      "Tilapia",
+      "feijoada",
+      "bisteca",
+      "carne de panela"
     ]
   },
   "prato": {
@@ -29,14 +33,18 @@
       "Bife Grelhado": 7,
       "Peito de Frango a Milanesa": 7,
       "Strogonoff de Frango": 7,
-      "Tilapia": 7
+      "Tilapia": 7,
+      "ovo": 3
     },
     "carnes": [
       "Almondegas",
       "Bife Grelhado",
       "Peito de Frango a Milanesa",
       "Strogonoff de Frango",
-      "Tilapia"
+      "Tilapia",
+      "carne de panela",
+      "Bisteca",
+      "feijoada"
     ]
   }
 }

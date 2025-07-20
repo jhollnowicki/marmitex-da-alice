@@ -1,0 +1,20 @@
+{
+  "pedido_id": 49,
+  "tipo_pedido": null,
+  "nome": "jhonatan",
+  "telefone": null,
+  "endereco": null,
+  "data_hora": "20/07/2025 17:19",
+  "valor_total": 19.9,
+  "forma_pagamento": "Dinheiro",
+  "troco_para": "30",
+  "pratos": [
+    {
+      "base": "Almondegas",
+      "adicionais": "",
+      "observacoes": "",
+      "preco": 19.9
+    }
+  ],
+  "troco": 10.1
+}
