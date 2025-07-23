@@ -1,28 +1,54 @@
 {
   "pedido_id": 4,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
-  "telefone": "41987762651",
+  "nome": "jhonatta",
+  "telefone": "41987999296",
   "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 12:11",
-  "valor_total": 54.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "100",
+  "data_hora": "23/07/2025 00:45",
+  "valor_total": 114.0,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "Strogonoff de Frango",
-      "adicionais": "Strogonoff de Frango",
-      "observacoes": "Sem feijao",
-      "preco": 27
-    },
-    {
-      "tamanho": "grande",
-      "carne": "Peito de Frango a Milanesa",
-      "adicionais": "Peito de Frango a Milanesa",
-      "observacoes": "",
-      "preco": 27
+      "carne": "Bife Grelhado",
+      "adicionais": [
+        {
+          "nome": "Almondegas",
+          "quantidade": 2
+        },
+        {
+          "nome": "Peito de Frango a Milanesa",
+          "quantidade": 2
+        },
+        {
+          "nome": "Strogonoff de Frango",
+          "quantidade": 2
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-Cola 2lt",
+          "quantidade": 2
+        },
+        {
+          "nome": "Coca-Cola lata 350ml",
+          "quantidade": 2
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Chocolate Diamante Negro",
+          "quantidade": 2
+        },
+        {
+          "nome": "Balas Diversas",
+          "quantidade": 10
+        }
+      ],
+      "observacoes": "sem feijao",
+      "preco": 114.0
     }
   ],
-  "troco": 46.0
+  "troco": 0
 }

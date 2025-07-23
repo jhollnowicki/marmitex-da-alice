@@ -2,20 +2,12 @@
   "pedido_id": 15,
   "tipo_pedido": "Entrega",
   "nome": "juliana andressa",
-  "telefone": "41987999296",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "20/07/2025 12:37",
-  "valor_total": 25.0,
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "23/07/2025 02:42",
+  "valor_total": 0.0,
   "forma_pagamento": "",
   "troco_para": "",
-  "marmitas": [
-    {
-      "tamanho": "media",
-      "carne": "Bife Grelhado",
-      "adicionais": "Bife Grelhado",
-      "observacoes": "",
-      "preco": 25
-    }
-  ],
+  "marmitas": [],
   "troco": 0
 }

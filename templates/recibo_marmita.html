@@ -69,34 +69,26 @@
 
 <body class="min-h-screen flex items-center justify-center px-4 py-10 text-black">
   <div class="flex flex-col items-center space-y-6">
-    <div class="print-area leading-relaxed">
-      <div class="text-center font-bold text-black text-lg mb-1">
-        Marmitex da Alice</div>
+    <div class="print-area text-[12px] print:text-[9px] leading-relaxed">
+      <div class="text-center font-bold text-black text-lg mb-1">Marmitex da Alice</div>
       <hr class="border-t border-gray-400 my-2">
 
-      <!-- Cliente -->
       <div class="mb-2 font-bold">
-        <p class="font-bold">Cliente:</p>
+        <p class="font-bold">Cliente</p>
         <p>Nome: {{ nome }}</p>
         <p>Telefone: {{ telefone }}</p>
+        <p>Endereço: {{ endereco }}</p>
+        <p>Pedido Nº: {{ pedido_id }}</p>
       </div>
 
-      <!-- Endereço -->
-      <div class="mb-2 font-bold">
-        <p class="font-bold">Endereço de entrega:</p>
-        <p>{{ endereco }}</p>
-      </div>
-
-      <!-- Data e Hora -->
       <div class="mb-2 font-bold">
         <p>Data: {{ data_hora.split(" ")[0] }}</p>
         <p>Hora: {{ data_hora.split(" ")[1] }}</p>
-        <p class="font-bold">Itens do pedido:</p>
+        <p class="font-bold">Itens do pedido</p>
       </div>
 
       <hr class="border-t border-gray-400 my-2">
 
-      <!-- Itens -->
       <div class="mb-2 font-bold">
         <table class="w-full text-[10px] table-fixed">
           <thead>
@@ -108,22 +100,53 @@
           </thead>
           <tbody>
             {% for marmita in marmitas %}
-            <tr class="font-bold align-top">
-              <td class="px-1">1</td>
-              <td class="px-1">
-                <span class="font-bold">Marmita {{ marmita.tamanho }}</span><br>
-                <span class="text-[16px] print:text-[9px] font-bold leading-tight">
-                  {{ marmita.carne }}
-                </span>
-                {% if marmita.adicionais %}
-                <br>
-                <span class="text-[16px] print:text-[9px] font-bold leading-tight">
-                  + {{ marmita.adicionais }}
-                </span>
-                {% endif %}
-              </td>
-              <td class="text-right px-1">R$ {{ '%.2f' | format(marmita.preco) }}</td>
+            <tr class="border-t border-gray-400 align-top">
+              <td class="py-1">1</td>
+              <td class="py-1">Marmita ({{ marmita.tamanho }})<br>{{ marmita.carne }}</td>
+              <td class="py-1 text-right">R$ {{ "%.2f"|format(PRECOS.marmita.tamanhos[marmita.tamanho]) }}</td>
             </tr>
+
+            {% for adicional in marmita.adicionais %}
+            {% if adicional.quantidade > 0 %}
+            <tr>
+              <td class="py-1">{{ adicional.quantidade }}</td>
+              <td class="py-1">Adicional: {{ adicional.nome }}</td>
+              <td class="py-1 text-right">
+                {% set precos_adicional = PRECOS.marmita.adicionais | selectattr('nome', 'equalto', adicional.nome) |
+                map(attribute='preco') | list %}
+                R$ {{ '%.2f'|format((precos_adicional[0] if precos_adicional|length > 0 else 0) * adicional.quantidade)
+                }}
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+
+            {% for bebida in marmita.bebidas %}
+            {% if bebida.quantidade > 0 %}
+            <tr>
+              <td class="py-1">{{ bebida.quantidade }}</td>
+              <td class="py-1">{{ bebida.nome }}</td>
+              <td class="py-1 text-right">
+                R$ {{ '%.2f'|format(bebida.quantidade * bebida.preco) }}
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+
+
+            {% for outro in marmita.outros %}
+            {% if outro.quantidade > 0 %}
+            <tr>
+              <td class="py-1">{{ outro.quantidade }}</td>
+              <td class="py-1">{{ outro.nome }}</td>
+              <td class="py-1 text-right">
+                R$ {{ '%.2f'|format(outro.quantidade * outro.preco) }}
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+
+
             {% endfor %}
           </tbody>
         </table>
@@ -131,65 +154,48 @@
 
       <hr class="border-t border-gray-300 my-2">
 
-      <!-- Totais -->
-      <!-- Totais -->
-      <table class="w-full text-[16px] print:text-[9px] mt-2 leading-[1.4] print:leading-[1.3]">
+      <table class="w-full text-[12px] print:text-[9px] mt-2 leading-tight">
         <tr>
-          <td class="font-bold">Itens do pedido</td>
+          <td><strong>Itens do pedido</strong></td>
           <td class="text-right pr-1">R$ {{ '%.2f' | format(valor_total) }}</td>
         </tr>
         <tr>
-          <td class="font-bold">Taxa de entrega</td>
-          <td class="text-right pr-1">R$ 0,00</td>
-        </tr>
-        <tr>
-          <td class="font-bold">Subtotal</td>
-          <td class="text-right pr-1 font-bold">R$ {{ '%.2f' | format(valor_total) }}</td>
+          <td><strong>Subtotal</strong></td>
+          <td class="text-right pr-1"><strong>R$ {{ '%.2f' | format(valor_total) }}</strong></td>
         </tr>
       </table>
 
-
-      <!-- Forma de pagamento -->
-      <table class="w-full text-[16px] print:text-[9px] mt-2 leading-tight">
+      <table class="w-full text-[12px] print:text-[9px] mt-2 leading-tight">
         <tr>
           <td><strong>Forma de pagamento</strong></td>
           <td class="text-right pr-1">{{ forma_pagamento }}</td>
         </tr>
-        {% if forma_pagamento == "Dinheiro" and troco_para %}
+        {% if forma_pagamento == "Dinheiro" %}
         <tr>
           <td><strong>Troco para:</strong></td>
-          <td class="text-right pr-1">R$ {{ '%.2f' | format(troco_para|float) }}</td>
+          <td class="text-right pr-1">R$ {{ '%.2f' | format(troco_para) }}</td>
         </tr>
-        {% endif %}
         <tr>
           <td><strong>Troco:</strong></td>
-          <td class="text-right pr-1">R$ {{ '%.2f' | format(valor_total) }}</td>
+          <td class="text-right pr-1">R$ {{ '%.2f' | format(troco) }}</td>
         </tr>
+        {% endif %}
       </table>
-
-
-      <!-- Observação -->
-      {% if obs %}
-      <hr class="border-t border-gray-300 my-2">
-      <p class="font-semibold">Observação</p>
-      <p>{{ obs }}</p>
-      {% endif %}
     </div>
 
-    <!-- Botão Imprimir -->
     <div class="no-print">
       <button onclick="window.print()"
         class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
         Imprimir
       </button>
     </div>
-  </div>
 
-  <script>
-    window.onafterprint = () => {
-      window.location.href = "/escolha";
-    };
-  </script>
+    <script>
+      window.onafterprint = () => {
+        window.location.href = "/escolha";
+      };
+    </script>
+  </div>
 </body>
 
 </html>

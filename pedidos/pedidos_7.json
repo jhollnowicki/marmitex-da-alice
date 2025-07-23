@@ -1,19 +1,22 @@
 {
   "pedido_id": 7,
-  "tipo_pedido": null,
-  "nome": "jhonatan",
-  "telefone": null,
-  "endereco": null,
-  "data_hora": "20/07/2025 12:16",
-  "valor_total": 26.9,
+  "tipo_pedido": "Retirada",
+  "nome": "juliana andressa",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "23/07/2025 00:51",
+  "valor_total": 20.0,
   "forma_pagamento": "Cartão",
   "troco_para": "",
-  "pratos": [
+  "marmitas": [
     {
-      "base": "Bife Grelhado",
-      "adicionais": "Tilapia",
+      "tamanho": "grande",
+      "carne": "Bife Grelhado",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
       "observacoes": "",
-      "preco": 26.9
+      "preco": 20
     }
   ],
   "troco": 0

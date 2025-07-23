@@ -1,20 +1,21 @@
 {
   "pedido_id": 21,
-  "tipo_pedido": "Entrega",
+  "tipo_pedido": "Retirada",
   "nome": "jhonatan",
-  "telefone": "41987999296",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "20/07/2025 13:03",
-  "valor_total": 25.0,
-  "forma_pagamento": "",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "23/07/2025 03:03",
+  "valor_total": 19.9,
+  "forma_pagamento": "Cartão",
   "troco_para": "",
-  "marmitas": [
+  "pratos": [
     {
-      "tamanho": "media",
-      "carne": "Bife Grelhado",
-      "adicionais": "Bife Grelhado",
+      "base": "Bife Grelhado",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
       "observacoes": "",
-      "preco": 25
+      "preco": 19.9
     }
   ],
   "troco": 0

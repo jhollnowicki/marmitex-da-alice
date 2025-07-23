@@ -1,21 +1,70 @@
 {
   "pedido_id": 11,
-  "tipo_pedido": "Entrega",
+  "tipo_pedido": "Retirada",
   "nome": "jhonatan",
-  "telefone": "41987762651",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 12:29",
-  "valor_total": 27.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "50",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "23/07/2025 02:37",
+  "valor_total": 95.7,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "Bife Grelhado",
-      "adicionais": "Bife Grelhado",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 1
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 1
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 1
+        },
+        {
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 1
+        },
+        {
+          "nome": "Suco Natural",
+          "quantidade": 1
+        },
+        {
+          "nome": "Fanta Uva",
+          "quantidade": 1
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Bala Diversas",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bombom",
+          "quantidade": 1
+        },
+        {
+          "nome": "Diamante Negro",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pirulito",
+          "quantidade": 1
+        }
+      ],
       "observacoes": "",
-      "preco": 27
+      "preco": 95.7
     }
   ],
-  "troco": 23.0
+  "troco": 0
 }

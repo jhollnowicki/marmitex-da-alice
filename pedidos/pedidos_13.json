@@ -1,20 +1,69 @@
 {
   "pedido_id": 13,
-  "tipo_pedido": "Entrega",
-  "nome": "juliana andressa",
-  "telefone": "41987999296",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 12:34",
-  "valor_total": 53.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "50",
+  "tipo_pedido": "Retirada",
+  "nome": "jhonatan",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "23/07/2025 02:38",
+  "valor_total": 95.7,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "media",
-      "carne": "Tilapia",
-      "adicionais": "Almondegas,Bife Grelhado,Peito de Frango a Milanesa,Strogonoff de Frango,Tilapia",
+      "tamanho": "grande",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 1
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 1
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 1
+        },
+        {
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 1
+        },
+        {
+          "nome": "Suco Natural",
+          "quantidade": 1
+        },
+        {
+          "nome": "Fanta Uva",
+          "quantidade": 1
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Bala Diversas",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bombom",
+          "quantidade": 1
+        },
+        {
+          "nome": "Diamante Negro",
+          "quantidade": 1
+        },
+        {
+          "nome": "Pirulito",
+          "quantidade": 1
+        }
+      ],
       "observacoes": "",
-      "preco": 53
+      "preco": 95.7
     }
   ],
   "troco": 0

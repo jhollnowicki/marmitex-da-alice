@@ -30,6 +30,9 @@ async function carregarCardapio() {
 
         preencherCarnes("carnes-cadastradas-marmita", marmita.carnes || []);
         preencherCarnes("carnes-cadastradas-prato", prato.carnes || []);
+
+        preencherAdicionais("bebidas-cadastradas", data.bebidas || {});
+        preencherAdicionais("outros-cadastrados", data.outros || {});
     } catch (err) {
         console.error("Erro ao carregar cardápio:", err);
     }
@@ -46,17 +49,34 @@ function parseValor(str) {
 function preencherAdicionais(id, adicionais) {
     const ul = document.getElementById(id);
     ul.innerHTML = "";
-    Object.entries(adicionais).forEach(([nome, preco]) => {
-        const li = document.createElement("li");
-        li.className = "flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-md";
-        li.innerHTML = `
-      <span class="w-1/2">${nome}</span>
-      <input type="text" class="input-edit w-24" value="${formatarValor(preco)}" oninput="formatarMoeda(this)" />
-      <button class='text-red-500 font-bold' onclick='this.parentElement.remove()'>X</button>
-    `;
-        ul.appendChild(li);
-    });
+
+    // Se for array (marmita), usamos forEach direto
+    if (Array.isArray(adicionais)) {
+        adicionais.forEach(({ nome, preco }) => {
+            const li = document.createElement("li");
+            li.className = "flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-md";
+            li.innerHTML = `
+        <span class="w-1/2">${nome}</span>
+        <input type="text" class="input-edit w-24" value="${formatarValor(preco)}" oninput="formatarMoeda(this)" />
+        <button class='text-red-500 font-bold' onclick='this.parentElement.remove()'>X</button>
+      `;
+            ul.appendChild(li);
+        });
+    } else {
+        // Se for objeto (prato, bebidas, outros)
+        Object.entries(adicionais).forEach(([nome, preco]) => {
+            const li = document.createElement("li");
+            li.className = "flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-md";
+            li.innerHTML = `
+        <span class="w-1/2">${nome}</span>
+        <input type="text" class="input-edit w-24" value="${formatarValor(preco)}" oninput="formatarMoeda(this)" />
+        <button class='text-red-500 font-bold' onclick='this.parentElement.remove()'>X</button>
+      `;
+            ul.appendChild(li);
+        });
+    }
 }
+
 
 function preencherCarnes(id, carnes) {
     const ul = document.getElementById(id);
@@ -80,6 +100,10 @@ function configurarBotoes() {
 
     configurarCarne("add-carne-marmita", "input-carne-marmita", "carnes-cadastradas-marmita");
     configurarCarne("add-carne-prato", "input-carne-prato", "carnes-cadastradas-prato");
+
+    configurarAdicional("add-adicional-bebida", "novo-adicional-bebida", "preco-adicional-bebida", "bebidas-cadastradas");
+    configurarAdicional("add-adicional-outro", "novo-adicional-outro", "preco-adicional-outro", "outros-cadastrados");
+
 
     document.getElementById("salvarBtn").addEventListener("click", salvarCardapio);
 }
@@ -140,15 +164,26 @@ function salvarCardapio() {
         return obj;
     };
 
-    const getAdicionais = (id) => {
+    const getAdicionais = (id, comoArray = false) => {
         const ul = document.getElementById(id);
-        const itens = {};
-        ul.querySelectorAll("li").forEach(li => {
-            const nome = li.querySelector("span").innerText;
-            const preco = parseValor(li.querySelector("input").value);
-            itens[nome] = preco;
-        });
-        return itens;
+
+        if (comoArray) {
+            const lista = [];
+            ul.querySelectorAll("li").forEach(li => {
+                const nome = li.querySelector("span").innerText;
+                const preco = parseValor(li.querySelector("input").value);
+                lista.push({ nome, preco });
+            });
+            return lista;
+        } else {
+            const itens = {};
+            ul.querySelectorAll("li").forEach(li => {
+                const nome = li.querySelector("span").innerText;
+                const preco = parseValor(li.querySelector("input").value);
+                itens[nome] = preco;
+            });
+            return itens;
+        }
     };
 
     const getCarnes = (id) => {
@@ -163,14 +198,16 @@ function salvarCardapio() {
     const dados = {
         marmita: {
             tamanhos: getValores(["mini", "media", "grande", "executiva", "top3"]),
-            adicionais: getAdicionais("adicionais-cadastrados-marmita"),
+            adicionais: getAdicionais("adicionais-cadastrados-marmita", true), // <- array!
             carnes: getCarnes("carnes-cadastradas-marmita")
         },
         prato: {
             base: parseValor(document.getElementById("preco-prato-feito").value),
             adicionais: getAdicionais("adicionais-cadastrados-prato"),
             carnes: getCarnes("carnes-cadastradas-prato")
-        }
+        },
+        bebidas: getAdicionais("bebidas-cadastradas"),
+        outros: getAdicionais("outros-cadastrados")
     };
 
     fetch("/salvar_cardapio", {
@@ -180,9 +217,9 @@ function salvarCardapio() {
     })
         .then(res => res.json())
         .then(res => mostrarMensagem("Cardápio atualizado com sucesso!", "green"))
-
-        .catch(err => mostrarMensagem("Erro ao salvar cardápio.", "red"))
+        .catch(err => mostrarMensagem("Erro ao salvar cardápio.", "red"));
 }
+
 function mostrarMensagem(msg, cor = 'green') {
     let toast = document.getElementById("mensagem-toast");
 

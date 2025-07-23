@@ -1,21 +1,56 @@
 {
   "pedido_id": 8,
   "tipo_pedido": "Entrega",
-  "nome": "juliana andressa",
+  "nome": "jhonatan",
   "telefone": "41987762651",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "20/07/2025 12:16",
-  "valor_total": 53.0,
+  "endereco": "rua pontal do parana 73",
+  "data_hora": "22/07/2025 18:07",
+  "valor_total": 20.0,
   "forma_pagamento": "Dinheiro",
-  "troco_para": "100",
+  "troco_para": "150",
   "marmitas": [
     {
-      "tamanho": "media",
+      "tamanho": "grande",
       "carne": "Bife Grelhado",
-      "adicionais": "Almondegas,Bife Grelhado,Peito de Frango a Milanesa,Strogonoff de Frango,Tilapia",
+      "adicionais": [
+        {
+          "nome": "Almondegas",
+          "preco": 7,
+          "quantidade": 0
+        },
+        {
+          "nome": "Peito de Frango a Milanesa",
+          "preco": 7,
+          "quantidade": 0
+        },
+        {
+          "nome": "Strogonoff de Frango",
+          "preco": 7,
+          "quantidade": 0
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-Cola 2lt",
+          "preco": 14,
+          "quantidade": 0
+        },
+        {
+          "nome": "Suco Natural",
+          "preco": 8,
+          "quantidade": 0
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Chocolate Diamante Negro",
+          "preco": 5,
+          "quantidade": 0
+        }
+      ],
       "observacoes": "",
-      "preco": 53
+      "preco": 20.0
     }
   ],
-  "troco": 47.0
+  "troco": 130.0
 }

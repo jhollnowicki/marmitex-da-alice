@@ -9,15 +9,21 @@ async function carregarCardapio() {
   try {
     const res = await fetch("/cardapio");
     const data = await res.json();
-    const { marmita } = data;
+
+    const { marmita, bebidas, outros } = data;
 
     preencherTamanhos("tamanhos", marmita.tamanhos);
     preencherCarnes("carnes", marmita.carnes);
     preencherAdicionais("adicionais", marmita.adicionais);
+    
+    // Adicione isso:
+    preencherAdicionais("bebidas", bebidas);
+    preencherAdicionais("outros", outros);
   } catch (err) {
     console.error("Erro ao carregar cardápio:", err);
   }
 }
+
 
 function preencherTamanhos(containerId, tamanhos) {
   const container = document.getElementById(containerId);
@@ -62,7 +68,7 @@ function configurarBotoes() {
   document.addEventListener("click", (event) => {
     if (event.target.classList.contains("btn-option")) {
       const grupo = event.target.parentElement.id;
-      const tipo = grupo === "adicionais" ? "multiplo" : "unico";
+      const tipo = ["adicionais", "bebidas", "outros"].includes(grupo) ? "multiplo" : "unico";
 
       if (tipo === "unico") {
         document.querySelectorAll(`#${grupo} .btn-option`).forEach(btn => btn.classList.remove("active"));
@@ -73,6 +79,7 @@ function configurarBotoes() {
     }
   });
 }
+
 
 function capitalizar(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();

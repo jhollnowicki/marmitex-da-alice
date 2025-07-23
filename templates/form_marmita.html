@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <title>Pedido - Marmita</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="{{ url_for('static', filename='scripts/form.js') }}" defer></script>
   <script src="{{ url_for('static', filename='scripts/marmita_sacola.js') }}" defer></script>
 
   <style>
@@ -31,11 +30,45 @@
       color: white;
       border-color: #f50b0b;
     }
+
+
+    .quantidade-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: white;
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid #000;
+    }
+
+
+    .quantidade-btn {
+      border: 2px solid #555;
+      border-radius: 12px;
+      background-color: white;
+      font-weight: 500;
+      padding: 4px 10px;
+      font-size: 1rem;
+      line-height: 1;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .quantidade-btn:hover {
+      background-color: #fee2e2;
+      color: #000000;
+    }
+
+    .quantidade-display {
+      min-width: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
   </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center px-4 text-black">
-  <form action="/pedido" method="post"
+  <form id="formulario"
     class="bg-white/30 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-lg w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[40%] max-w-2xl space-y-6 relative z-10 text-[15px] sm:text-[16px]">
 
     <input type="hidden" name="tipo_formulario" value="marmita">
@@ -90,6 +123,23 @@
           <!-- JS insere aqui -->
         </div>
       </div>
+
+      <!-- Bebidas dinâmicas -->
+      <div>
+        <label class="block font-semibold">Bebidas:</label>
+        <div class="flex flex-wrap gap-2 mt-1" id="bebidas">
+          <!-- JS insere aqui -->
+        </div>
+      </div>
+
+      <!-- Outros dinâmicos -->
+      <div>
+        <label class="block font-semibold">Outros:</label>
+        <div class="flex flex-wrap gap-2 mt-1" id="outros">
+          <!-- JS insere aqui -->
+        </div>
+      </div>
+
 
       <!-- Observações -->
       <div>

@@ -104,21 +104,41 @@
           </thead>
           <tbody>
             {% for prato in pratos %}
-            <tr class="font-bold align-top">
-              <td>1</td>
-              <td>
-                Base: {{ prato.base }}<br>
-                {% if prato.adicionais %}
-                <p class="text-[10px] font-bold leading-tight">Carne: {{ prato.adicionais }}</p>
-                {% endif %}
-                {% if prato.observacoes %}
-                <p class="text-[10px] font-bold leading-tight">Obs: {{ prato.observacoes }}</p>
-                {% endif %}
-              </td>
-              <td class="text-right">R$ {{ '%.2f' | format(prato.preco) }}</td>
+            <tr class="border-t border-gray-400 align-top">
+              <td class="py-1">1</td>
+              <td class="py-1">Prato Feito: {{ prato.base }}</td>
+              <td class="py-1 text-right">R$ {{ '%.2f'|format(PRECOS.prato.base) }}</td>
+            </tr>
+
+            {% for adicional in prato.adicionais %}
+            <tr>
+              <td class="py-1">{{ adicional.quantidade }}</td>
+              <td class="py-1">Adicional: {{ adicional.nome }}</td>
+              <td class="py-1 text-right">R$ {{ '%.2f'|format(adicional.preco * adicional.quantidade) }}</td>
             </tr>
             {% endfor %}
+
+            {% for bebida in prato.bebidas %}
+            <tr>
+              <td class="py-1">{{ bebida.quantidade }}</td>
+              <td class="py-1">Bebida: {{ bebida.nome }}</td>
+              <td class="py-1 text-right">R$ {{ '%.2f'|format(bebida.preco * bebida.quantidade) }}</td>
+            </tr>
+            {% endfor %}
+
+            {% for outro in prato.outros %}
+            <tr>
+              <td class="py-1">{{ outro.quantidade }}</td>
+              <td class="py-1">Outro: {{ outro.nome }}</td>
+              <td class="py-1 text-right">R$ {{ '%.2f'|format(outro.preco * outro.quantidade) }}</td>
+            </tr>
+            {% endfor %}
+
+            {% endfor %}
+
+
           </tbody>
+
         </table>
       </div>
 
@@ -152,9 +172,7 @@
           <td class="text-right pr-1">R$ {{ '%.2f' | format(troco) }}</td>
         </tr>
         {% endif %}
-        
       </table>
-
     </div>
 
     <!-- Botão Imprimir -->
@@ -170,6 +188,7 @@
         window.location.href = "/escolha";
       };
     </script>
+  </div>
 </body>
 
 </html>

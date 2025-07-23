@@ -1,21 +1,28 @@
 {
   "pedido_id": 1,
-  "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
-  "telefone": "41987999296",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 11:36",
-  "valor_total": 27.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "R$ 100,00",
+  "tipo_pedido": "Retirada",
+  "nome": "jhonatta",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "23/07/2025 00:31",
+  "valor_total": 20.0,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
       "carne": "Bife Grelhado",
-      "adicionais": "Bife Grelhado",
+      "adicionais": [
+        {
+          "nome": "Almondegas",
+          "quantidade": 0
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
       "observacoes": "",
-      "preco": 27
+      "preco": 20
     }
   ],
-  "troco": 73.0
+  "troco": 0
 }

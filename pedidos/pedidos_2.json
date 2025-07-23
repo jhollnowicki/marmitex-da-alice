@@ -1,21 +1,32 @@
 {
   "pedido_id": 2,
-  "tipo_pedido": "Entrega",
-  "nome": "jhonatta",
-  "telefone": "41987762651",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "20/07/2025 11:54",
-  "valor_total": 25.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "50",
+  "tipo_pedido": "Retirada",
+  "nome": "jhonatan",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "23/07/2025 00:33",
+  "valor_total": 20.0,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "media",
+      "tamanho": "grande",
       "carne": "Bife Grelhado",
-      "adicionais": "Bife Grelhado",
+      "adicionais": [
+        {
+          "nome": "Almondegas",
+          "quantidade": 0
+        },
+        {
+          "nome": "Strogonoff de Frango",
+          "quantidade": 0
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
       "observacoes": "",
-      "preco": 25
+      "preco": 20
     }
   ],
-  "troco": 25.0
+  "troco": 0
 }
