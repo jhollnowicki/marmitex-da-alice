@@ -1,17 +1,17 @@
 {
-  "pedido_id": 41,
+  "pedido_id": 69,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
+  "nome": "Jhonatan Peres Nowicki",
   "telefone": "41987999296",
-  "endereco": "RUA PONTAL DO PARANA 73",
-  "data_hora": "23/07/2025 22:36",
-  "valor_total": 95.7,
+  "endereco": "Rua Pontal do Parana 63",
+  "data_hora": "23/07/2025 23:57",
+  "valor_total": 124.4,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "grande",
-      "carne": "Peito de Frango a Milanesa",
+      "tamanho": "media",
+      "carne": "bisteca",
       "adicionais": [
         {
           "nome": "Ovo",
@@ -33,19 +33,9 @@
           "preco": 14
         },
         {
-          "nome": "Guarana Antartica 2lts",
-          "quantidade": 1,
-          "preco": 12
-        },
-        {
           "nome": "Suco Natural",
           "quantidade": 1,
           "preco": 10
-        },
-        {
-          "nome": "Fanta Uva",
-          "quantidade": 1,
-          "preco": 14
         }
       ],
       "outros": [
@@ -55,23 +45,52 @@
           "preco": 0.2
         },
         {
-          "nome": "Bombom",
-          "quantidade": 1,
-          "preco": 2
-        },
-        {
           "nome": "Diamante Negro",
           "quantidade": 1,
           "preco": 6
-        },
-        {
-          "nome": "Pirulito",
-          "quantidade": 1,
-          "preco": 1.5
         }
       ],
       "observacoes": "",
-      "preco": 95.7
+      "preco": 64.2
+    },
+    {
+      "tamanho": "media",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 1
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 1
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 1,
+          "preco": 14
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Bala Diversas",
+          "quantidade": 1,
+          "preco": 0.2
+        }
+      ],
+      "observacoes": "",
+      "preco": 45.2
+    },
+    {
+      "tamanho": "mini",
+      "carne": "Strogonoff de Frango",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
+      "observacoes": "Sem feijao",
+      "preco": 15
     }
   ],
   "troco": 0

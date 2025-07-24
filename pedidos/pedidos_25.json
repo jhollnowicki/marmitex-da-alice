@@ -1,50 +1,27 @@
 {
   "pedido_id": 25,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
+  "nome": "Jhonatan Peres Nowicki",
   "telefone": "41987999296",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "23/07/2025 03:10",
-  "valor_total": 171.4,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "R$ 200,00",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "24/07/2025 01:45",
+  "valor_total": 108.6,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "grande",
-      "carne": "Bife Grelhado",
+      "tamanho": "media",
+      "carne": "Peito de Frango a Milanesa",
       "adicionais": [
         {
-          "nome": "Ovo",
-          "quantidade": 2
-        },
-        {
           "nome": "Bife Grelhado",
-          "quantidade": 2
-        },
-        {
-          "nome": "Almondegas",
           "quantidade": 2
         }
       ],
       "bebidas": [
         {
           "nome": "Coca-cola 2lts",
-          "quantidade": 2,
-          "preco": 14
-        },
-        {
-          "nome": "Guarana Antartica 2lts",
-          "quantidade": 2,
-          "preco": 12
-        },
-        {
-          "nome": "Suco Natural",
-          "quantidade": 2,
-          "preco": 10
-        },
-        {
-          "nome": "Fanta Uva",
-          "quantidade": 2,
+          "quantidade": 1,
           "preco": 14
         }
       ],
@@ -55,24 +32,50 @@
           "preco": 0.2
         },
         {
-          "nome": "Bombom",
-          "quantidade": 2,
-          "preco": 2
-        },
-        {
-          "nome": "Diamante Negro",
-          "quantidade": 2,
-          "preco": 6
-        },
-        {
           "nome": "Pirulito",
           "quantidade": 2,
           "preco": 1.5
         }
       ],
-      "observacoes": "",
-      "preco": 171.4
+      "observacao": "Sim feijao",
+      "preco": 49.4
+    },
+    {
+      "tamanho": "executiva",
+      "carne": "Bife Grelhado",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 2
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 1,
+          "preco": 12
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Bala Diversas",
+          "quantidade": 1,
+          "preco": 0.2
+        },
+        {
+          "nome": "Bombom",
+          "quantidade": 1,
+          "preco": 2
+        },
+        {
+          "nome": "Diamante Negro",
+          "quantidade": 1,
+          "preco": 6
+        }
+      ],
+      "observacao": "Compleito",
+      "preco": 59.2
     }
   ],
-  "troco": 28.6
+  "troco": 0
 }

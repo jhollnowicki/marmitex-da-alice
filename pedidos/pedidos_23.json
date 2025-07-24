@@ -1,11 +1,11 @@
 {
   "pedido_id": 23,
   "tipo_pedido": "Retirada",
-  "nome": "jhonatta",
+  "nome": "Juliana Andressa portes",
   "telefone": "",
   "endereco": "",
-  "data_hora": "23/07/2025 03:06",
-  "valor_total": 124.6,
+  "data_hora": "24/07/2025 01:41",
+  "valor_total": 171.5,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "pratos": [
@@ -24,7 +24,7 @@
         },
         {
           "nome": "Peito de Frango a Milanesa",
-          "quantidade": 2,
+          "quantidade": 1,
           "preco": 7
         },
         {
@@ -87,8 +87,33 @@
           "preco": 1.5
         }
       ],
-      "observacoes": "",
-      "preco": 124.6
+      "observacao": "Dem djdjd",
+      "preco": 117.6
+    },
+    {
+      "base": "Tilapia",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 2,
+          "preco": 7
+        },
+        {
+          "nome": "Strogonoff de Frango",
+          "quantidade": 2,
+          "preco": 7
+        }
+      ],
+      "bebidas": [],
+      "outros": [
+        {
+          "nome": "Bombom",
+          "quantidade": 3,
+          "preco": 2
+        }
+      ],
+      "observacao": "Hwhahaha",
+      "preco": 53.9
     }
   ],
   "troco": 0

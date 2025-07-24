@@ -1,20 +1,118 @@
 {
   "pedido_id": 48,
-  "tipo_pedido": null,
-  "nome": "juliana andressa",
-  "telefone": null,
-  "endereco": null,
-  "data_hora": "20/07/2025 17:17",
-  "valor_total": 33.9,
+  "tipo_pedido": "Entrega",
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "41987999296",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "23/07/2025 23:00",
+  "valor_total": 170.7,
   "forma_pagamento": "Dinheiro",
-  "troco_para": "60",
-  "pratos": [
+  "troco_para": "R$ 200,00",
+  "marmitas": [
     {
-      "base": "Almondegas",
-      "adicionais": "Almondegas, Strogonoff de Frango",
+      "tamanho": "grande",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 1
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 1
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 1,
+          "preco": 14
+        },
+        {
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 1,
+          "preco": 12
+        },
+        {
+          "nome": "Suco Natural",
+          "quantidade": 1,
+          "preco": 10
+        },
+        {
+          "nome": "Fanta Uva",
+          "quantidade": 1,
+          "preco": 14
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Bala Diversas",
+          "quantidade": 1,
+          "preco": 0.2
+        },
+        {
+          "nome": "Bombom",
+          "quantidade": 1,
+          "preco": 2
+        },
+        {
+          "nome": "Diamante Negro",
+          "quantidade": 1,
+          "preco": 6
+        },
+        {
+          "nome": "Pirulito",
+          "quantidade": 1,
+          "preco": 1.5
+        }
+      ],
       "observacoes": "",
-      "preco": 33.9
+      "preco": 95.7
+    },
+    {
+      "tamanho": "grande",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 1
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 3
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
+      "observacoes": "",
+      "preco": 41
+    },
+    {
+      "tamanho": "media",
+      "carne": "carne de panela",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 1
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 1
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
+      "observacoes": "",
+      "preco": 34
     }
   ],
-  "troco": 26.1
+  "troco": 29.3
 }

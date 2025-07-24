@@ -1,29 +1,46 @@
 {
   "pedido_id": 17,
   "tipo_pedido": "Retirada",
-  "nome": "jhonatta",
+  "nome": "Jhonatan Peres Nowicki",
   "telefone": "",
   "endereco": "",
-  "data_hora": "23/07/2025 02:44",
-  "valor_total": 95.7,
+  "data_hora": "24/07/2025 01:13",
+  "valor_total": 155.0,
   "forma_pagamento": "Cartão",
   "troco_para": "",
-  "marmitas": [
+  "pratos": [
     {
-      "tamanho": "grande",
-      "carne": "Peito de Frango a Milanesa",
+      "base": "Strogonoff de Frango",
       "adicionais": [
         {
-          "nome": "Ovo",
-          "quantidade": 1
+          "nome": "Almondegas",
+          "quantidade": 1,
+          "preco": 7
         },
         {
           "nome": "Bife Grelhado",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 7
         },
         {
-          "nome": "Almondegas",
-          "quantidade": 1
+          "nome": "Peito de Frango a Milanesa",
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "Strogonoff de Frango",
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "Tilapia",
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "ovo",
+          "quantidade": 1,
+          "preco": 3
         }
       ],
       "bebidas": [
@@ -55,23 +72,32 @@
           "preco": 0.2
         },
         {
-          "nome": "Bombom",
-          "quantidade": 1,
-          "preco": 2
-        },
-        {
           "nome": "Diamante Negro",
           "quantidade": 1,
           "preco": 6
-        },
-        {
-          "nome": "Pirulito",
-          "quantidade": 1,
-          "preco": 1.5
         }
       ],
-      "observacoes": "",
-      "preco": 95.7
+      "observacao": "",
+      "preco": 114.1
+    },
+    {
+      "base": "carne de panela",
+      "adicionais": [
+        {
+          "nome": "Almondegas",
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "Peito de Frango a Milanesa",
+          "quantidade": 2,
+          "preco": 7
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
+      "observacao": "",
+      "preco": 40.9
     }
   ],
   "troco": 0

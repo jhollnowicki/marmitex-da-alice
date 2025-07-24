@@ -114,9 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
     div.className = "bg-white/80 rounded-lg p-4 shadow relative";
 
     let html = `
-      <button type="button" class="absolute top-2 right-2 text-red-600 font-bold text-lg" title="Remover item">&times;</button>
-      <p><strong>Carne:</strong> ${prato.base}</p>
-    `;
+    <button type="button" class="absolute top-2 right-2 text-red-600 font-bold text-lg" title="Remover item">&times;</button>
+    <p><strong>Carne:</strong> ${prato.base}</p>
+  `;
 
     const categorias = ["adicionais", "bebidas", "outros"];
     categorias.forEach(cat => {
@@ -130,17 +130,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     html += `
-      <p><strong>Observações:</strong> ${prato.observacoes || "Nenhuma"}</p>
-      <input type="hidden" name="pratos[${idx}][base]" value="${prato.base}">
-      <input type="hidden" name="pratos[${idx}][observacoes]" value="${prato.observacoes}">
-    `;
+    <p><strong>Observações:</strong> ${prato.observacao || "Nenhuma"}</p>
+    <input type="hidden" name="pratos[${idx}][base]" value="${prato.base}">
+    <input type="hidden" name="pratos[${idx}][observacao]" value="${prato.observacao}">
+  `;
 
     categorias.forEach(cat => {
       prato[cat].forEach((el, i) => {
         html += `
-          <input type="hidden" name="pratos[${idx}][${cat}][${i}][nome]" value="${el.nome}">
-          <input type="hidden" name="pratos[${idx}][${cat}][${i}][quantidade]" value="${el.quantidade}">
-        `;
+        <input type="hidden" name="pratos[${idx}][${cat}][${i}][nome]" value="${el.nome}">
+        <input type="hidden" name="pratos[${idx}][${cat}][${i}][quantidade]" value="${el.quantidade}">
+      `;
       });
     });
 
@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     return div;
   }
+
 
   function renderSacola() {
     sacola.innerHTML = "";
@@ -174,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
       adicionais: getSelecionadosQuantidades(adicionaisSelecionados),
       bebidas: getSelecionadosQuantidades(bebidasSelecionados),
       outros: getSelecionadosQuantidades(outrosSelecionados),
-      observacoes: document.getElementById("observacoes").value.trim()
+      observacao: document.getElementById("observacoes").value.trim()
     };
 
     pratos.push(prato);
@@ -210,43 +211,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const btnEnviar = document.getElementById("btn-enviar-pedido");
 
-btnEnviar.addEventListener("click", async () => {
-  if (pratos.length === 0) {
-    alert("Adicione pelo menos 1 prato antes de enviar.");
-    return;
-  }
-
-  const dadosPedido = {
-    tipo_formulario: "prato",
-    tipo_pedido: "Retirada",  // ou "Entrega" se quiser implementar
-    nome: document.getElementById("nome").value.trim(),
-    telefone: "",  // opcional
-    endereco: "",  // opcional
-    pratos: pratos,
-    forma_pagamento: document.getElementById("forma_pagamento").value,
-    troco_para: document.getElementById("troco_para").value
-  };
-
-  try {
-    const response = await fetch("/pedido", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(dadosPedido)
-    });
-
-    if (!response.ok) {
-      const erro = await response.text();
-      throw new Error(erro);
+  btnEnviar.addEventListener("click", async () => {
+    if (pratos.length === 0) {
+      alert("Adicione pelo menos 1 prato antes de enviar.");
+      return;
     }
 
-    const resultado = await response.json();
-    window.location.href = resultado.redirect;
-  } catch (err) {
-    console.error("Erro ao enviar pedido:", err);
-    alert("Erro ao enviar pedido. Verifique os dados e tente novamente.");
-  }
-});
+    const dadosPedido = {
+      tipo_formulario: "prato",
+      tipo_pedido: "Retirada",  // ou "Entrega" se quiser implementar
+      nome: document.getElementById("nome").value.trim(),
+      telefone: "",  // opcional
+      endereco: "",  // opcional
+      pratos: pratos,
+      forma_pagamento: document.getElementById("forma_pagamento").value,
+      troco_para: document.getElementById("troco_para").value
+    };
+
+    try {
+      const response = await fetch("/pedido", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dadosPedido)
+      });
+
+      if (!response.ok) {
+        const erro = await response.text();
+        throw new Error(erro);
+      }
+
+      const resultado = await response.json();
+      window.location.href = resultado.redirect;
+    } catch (err) {
+      console.error("Erro ao enviar pedido:", err);
+      alert("Erro ao enviar pedido. Verifique os dados e tente novamente.");
+    }
+  });
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const trocoInput = document.getElementById("troco_para");
+
+    if (trocoInput) {
+      trocoInput.addEventListener("input", function () {
+        let valor = trocoInput.value.replace(/\D/g, "");
+        valor = (parseInt(valor || 0) / 100).toFixed(2);
+        trocoInput.value = "R$ " + valor.replace(".", ",");
+      });
+    }
+  });

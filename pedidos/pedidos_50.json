@@ -1,20 +1,32 @@
 {
   "pedido_id": 50,
-  "tipo_pedido": null,
-  "nome": "andressa",
-  "telefone": null,
-  "endereco": null,
-  "data_hora": "20/07/2025 17:19",
-  "valor_total": 26.9,
+  "tipo_pedido": "Retirada",
+  "nome": "jhonatta",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "23/07/2025 23:09",
+  "valor_total": 38.0,
   "forma_pagamento": "Dinheiro",
-  "troco_para": "60",
-  "pratos": [
+  "troco_para": "R$ 50,00",
+  "marmitas": [
     {
-      "base": "Almondegas",
-      "adicionais": "Strogonoff de Frango",
+      "tamanho": "grande",
+      "carne": "Strogonoff de Frango",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 2
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 2
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
       "observacoes": "",
-      "preco": 26.9
+      "preco": 38
     }
   ],
-  "troco": 33.1
+  "troco": 12.0
 }

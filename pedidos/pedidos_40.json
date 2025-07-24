@@ -1,21 +1,78 @@
 {
   "pedido_id": 40,
   "tipo_pedido": "Entrega",
-  "nome": "juliana andressa",
-  "telefone": "41987762651",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 14:19",
-  "valor_total": 55.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "60",
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "41987999296",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "23/07/2025 22:29",
+  "valor_total": 95.7,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "Bife Grelhado",
-      "adicionais": "Almondegas,Bife Grelhado,Peito de Frango a Milanesa,Strogonoff de Frango,Tilapia",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 1
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 1
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 1,
+          "preco": 14
+        },
+        {
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 1,
+          "preco": 12
+        },
+        {
+          "nome": "Suco Natural",
+          "quantidade": 1,
+          "preco": 10
+        },
+        {
+          "nome": "Fanta Uva",
+          "quantidade": 1,
+          "preco": 14
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Bala Diversas",
+          "quantidade": 1,
+          "preco": 0.2
+        },
+        {
+          "nome": "Bombom",
+          "quantidade": 1,
+          "preco": 2
+        },
+        {
+          "nome": "Diamante Negro",
+          "quantidade": 1,
+          "preco": 6
+        },
+        {
+          "nome": "Pirulito",
+          "quantidade": 1,
+          "preco": 1.5
+        }
+      ],
       "observacoes": "",
-      "preco": 55
+      "preco": 95.7
     }
   ],
-  "troco": 5.0
+  "troco": 0
 }

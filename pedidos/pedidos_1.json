@@ -1,27 +1,60 @@
 {
   "pedido_id": 1,
-  "tipo_pedido": "Retirada",
-  "nome": "jhonatta",
-  "telefone": "",
-  "endereco": "",
-  "data_hora": "23/07/2025 00:31",
-  "valor_total": 20.0,
+  "tipo_pedido": "Entrega",
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "41987999296",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "24/07/2025 00:00",
+  "valor_total": 104.5,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "grande",
-      "carne": "Bife Grelhado",
+      "tamanho": "media",
+      "carne": "Peito de Frango a Milanesa",
       "adicionais": [
         {
+          "nome": "Bife Grelhado",
+          "quantidade": 3
+        },
+        {
           "nome": "Almondegas",
-          "quantidade": 0
+          "quantidade": 2
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
+      "observacoes": "Sem farofa",
+      "preco": 51
+    },
+    {
+      "tamanho": "executiva",
+      "carne": "bisteca",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 2
         }
       ],
       "bebidas": [],
       "outros": [],
       "observacoes": "",
-      "preco": 20
+      "preco": 31
+    },
+    {
+      "tamanho": "media",
+      "carne": "Strogonoff de Frango",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [
+        {
+          "nome": "Pirulito",
+          "quantidade": 3,
+          "preco": 1.5
+        }
+      ],
+      "observacoes": "Sem feijao",
+      "preco": 22.5
     }
   ],
   "troco": 0

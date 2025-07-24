@@ -1,21 +1,57 @@
 {
   "pedido_id": 46,
   "tipo_pedido": "Retirada",
-  "nome": "jhonatan",
-  "telefone": "",
-  "endereco": "",
-  "data_hora": "20/07/2025 17:13",
-  "valor_total": 20.0,
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "41987999296",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "23/07/2025 22:47",
+  "valor_total": 84.0,
   "forma_pagamento": "Dinheiro",
-  "troco_para": "60",
+  "troco_para": "R$ 100,00",
   "marmitas": [
     {
-      "tamanho": "grande",
-      "carne": "Bife Grelhado",
-      "adicionais": "",
+      "tamanho": "media",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 1
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 1
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 1,
+          "preco": 14
+        },
+        {
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 1,
+          "preco": 12
+        },
+        {
+          "nome": "Suco Natural",
+          "quantidade": 1,
+          "preco": 10
+        },
+        {
+          "nome": "Fanta Uva",
+          "quantidade": 1,
+          "preco": 14
+        }
+      ],
+      "outros": [],
       "observacoes": "",
-      "preco": 20
+      "preco": 84
     }
   ],
-  "troco": 40.0
+  "troco": 16.0
 }

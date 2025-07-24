@@ -1,20 +1,42 @@
 {
   "pedido_id": 49,
-  "tipo_pedido": null,
-  "nome": "jhonatan",
-  "telefone": null,
-  "endereco": null,
-  "data_hora": "20/07/2025 17:19",
-  "valor_total": 19.9,
+  "tipo_pedido": "Entrega",
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "41987999296",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "23/07/2025 23:07",
+  "valor_total": 50.0,
   "forma_pagamento": "Dinheiro",
-  "troco_para": "30",
-  "pratos": [
+  "troco_para": "R$ 70,00",
+  "marmitas": [
     {
-      "base": "Almondegas",
-      "adicionais": "",
+      "tamanho": "grande",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Ovo",
+          "quantidade": 1
+        },
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 1
+        },
+        {
+          "nome": "Almondegas",
+          "quantidade": 1
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 1,
+          "preco": 14
+        }
+      ],
+      "outros": [],
       "observacoes": "",
-      "preco": 19.9
+      "preco": 50
     }
   ],
-  "troco": 10.1
+  "troco": 20.0
 }

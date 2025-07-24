@@ -1,22 +1,27 @@
 {
   "pedido_id": 7,
   "tipo_pedido": "Retirada",
-  "nome": "juliana andressa",
+  "nome": "jhonatan",
   "telefone": "",
   "endereco": "",
-  "data_hora": "23/07/2025 00:51",
-  "valor_total": 20.0,
+  "data_hora": "24/07/2025 00:28",
+  "valor_total": 26.0,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "Bife Grelhado",
-      "adicionais": [],
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Almondegas",
+          "quantidade": 1
+        }
+      ],
       "bebidas": [],
       "outros": [],
-      "observacoes": "",
-      "preco": 20
+      "observacao": "asdsa",
+      "preco": 26
     }
   ],
   "troco": 0

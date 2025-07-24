@@ -1,12 +1,12 @@
 {
-  "pedido_id": 34,
+  "pedido_id": 57,
   "tipo_pedido": "Entrega",
   "nome": "Jhonatan Peres Nowicki",
   "telefone": "41987999296",
   "endereco": "Rua Pontal do Parana",
-  "data_hora": "23/07/2025 21:42",
+  "data_hora": "23/07/2025 23:29",
   "valor_total": 20.0,
-  "forma_pagamento": "Cartão",
+  "forma_pagamento": "",
   "troco_para": "",
   "marmitas": [
     {

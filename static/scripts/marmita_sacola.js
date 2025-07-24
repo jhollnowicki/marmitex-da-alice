@@ -64,7 +64,7 @@ function configurarFormulario() {
       adicionais: adicionaisSelecionados,
       bebidas: bebidasSelecionadas,
       outros: outrosSelecionados,
-      observacoes: obs
+      observacao: obs
     };
     sacola.push(item);
     renderizarSacola();
@@ -160,7 +160,7 @@ function renderizarSacola() {
       ${adicionaisHTML}
       ${bebidasHTML}
       ${outrosHTML}
-      <p class="mt-2"><strong>Observações:</strong> ${item.observacoes || "Nenhuma"}</p>
+      <p class="mt-2"><strong>Observações:</strong> ${item.observacao || "Nenhuma"}</p>
       <button type="button" class="text-red-600 font-bold mt-2" onclick="removerMarmita(${index})">Remover</button>
     `;
 

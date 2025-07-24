@@ -1,17 +1,17 @@
 {
   "pedido_id": 14,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
-  "telefone": "41987999296",
+  "nome": "jhonatta",
+  "telefone": "41987762651",
   "endereco": "rua pontal do parana 73",
-  "data_hora": "23/07/2025 02:39",
-  "valor_total": 100.7,
+  "data_hora": "24/07/2025 01:02",
+  "valor_total": 115.7,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "executiva",
-      "carne": "Bife Grelhado",
+      "tamanho": "grande",
+      "carne": "Peito de Frango a Milanesa",
       "adicionais": [
         {
           "nome": "Ovo",
@@ -29,41 +29,58 @@
       "bebidas": [
         {
           "nome": "Coca-cola 2lts",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 14
         },
         {
           "nome": "Guarana Antartica 2lts",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 12
         },
         {
           "nome": "Suco Natural",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 10
         },
         {
           "nome": "Fanta Uva",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 14
         }
       ],
       "outros": [
         {
           "nome": "Bala Diversas",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 0.2
         },
         {
           "nome": "Bombom",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 2
         },
         {
           "nome": "Diamante Negro",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 6
         },
         {
           "nome": "Pirulito",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 1.5
         }
       ],
-      "observacoes": "",
-      "preco": 100.7
+      "observacao": "asdasd",
+      "preco": 95.7
+    },
+    {
+      "tamanho": "grande",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
+      "observacao": "asdas",
+      "preco": 20
     }
   ],
   "troco": 0

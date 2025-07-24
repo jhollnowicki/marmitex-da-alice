@@ -1,69 +1,22 @@
 {
   "pedido_id": 11,
-  "tipo_pedido": "Retirada",
-  "nome": "jhonatan",
-  "telefone": "",
-  "endereco": "",
-  "data_hora": "23/07/2025 02:37",
-  "valor_total": 95.7,
-  "forma_pagamento": "Cartão",
+  "tipo_pedido": "Entrega",
+  "nome": "jhonatta",
+  "telefone": "41987999296",
+  "endereco": "rua pontal do parana 73",
+  "data_hora": "24/07/2025 00:40",
+  "valor_total": 20.0,
+  "forma_pagamento": "",
   "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
       "carne": "Peito de Frango a Milanesa",
-      "adicionais": [
-        {
-          "nome": "Ovo",
-          "quantidade": 1
-        },
-        {
-          "nome": "Bife Grelhado",
-          "quantidade": 1
-        },
-        {
-          "nome": "Almondegas",
-          "quantidade": 1
-        }
-      ],
-      "bebidas": [
-        {
-          "nome": "Coca-cola 2lts",
-          "quantidade": 1
-        },
-        {
-          "nome": "Guarana Antartica 2lts",
-          "quantidade": 1
-        },
-        {
-          "nome": "Suco Natural",
-          "quantidade": 1
-        },
-        {
-          "nome": "Fanta Uva",
-          "quantidade": 1
-        }
-      ],
-      "outros": [
-        {
-          "nome": "Bala Diversas",
-          "quantidade": 1
-        },
-        {
-          "nome": "Bombom",
-          "quantidade": 1
-        },
-        {
-          "nome": "Diamante Negro",
-          "quantidade": 1
-        },
-        {
-          "nome": "Pirulito",
-          "quantidade": 1
-        }
-      ],
-      "observacoes": "",
-      "preco": 95.7
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
+      "observacao": "asasd",
+      "preco": 20
     }
   ],
   "troco": 0

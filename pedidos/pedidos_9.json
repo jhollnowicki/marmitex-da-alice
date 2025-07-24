@@ -1,61 +1,59 @@
 {
   "pedido_id": 9,
-  "tipo_pedido": "Entrega",
+  "tipo_pedido": "Retirada",
   "nome": "jhonatan",
-  "telefone": "41987999296",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "22/07/2025 18:11",
-  "valor_total": 20.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "150",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "24/07/2025 00:37",
+  "valor_total": 116.6,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "Bife Grelhado",
+      "carne": "bisteca",
       "adicionais": [
         {
-          "nome": "Almondegas",
-          "preco": 7,
-          "quantidade": 0
-        },
-        {
-          "nome": "Peito de Frango a Milanesa",
-          "preco": 7,
-          "quantidade": 0
-        },
-        {
-          "nome": "Strogonoff de Frango",
-          "preco": 7,
-          "quantidade": 0
+          "nome": "Bife Grelhado",
+          "quantidade": 3
         }
       ],
       "bebidas": [
         {
-          "nome": "Coca-Cola 2lt",
-          "preco": 14,
-          "quantidade": 0
-        },
-        {
           "nome": "Suco Natural",
-          "preco": 8,
-          "quantidade": 0
+          "quantidade": 3,
+          "preco": 10
         }
       ],
       "outros": [
         {
-          "nome": "Chocolate Diamante Negro",
-          "preco": 5,
-          "quantidade": 0
+          "nome": "Bala Diversas",
+          "quantidade": 3,
+          "preco": 0.2
         },
         {
-          "nome": "Balas Diversas",
-          "preco": 0.2,
-          "quantidade": 0
+          "nome": "Diamante Negro",
+          "quantidade": 1,
+          "preco": 6
         }
       ],
-      "observacoes": "",
-      "preco": 20.0
+      "observacao": "sadasd",
+      "preco": 77.6
+    },
+    {
+      "tamanho": "media",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 3
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
+      "observacao": "ssssss",
+      "preco": 39
     }
   ],
-  "troco": 130.0
+  "troco": 0
 }

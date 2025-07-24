@@ -1,21 +1,66 @@
 {
   "pedido_id": 29,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
-  "telefone": "41987762651",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 13:49",
-  "valor_total": 20.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "30",
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "41987999296",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "24/07/2025 01:50",
+  "valor_total": 106.4,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "Bife Grelhado",
-      "adicionais": "",
-      "observacoes": "",
-      "preco": 20
+      "carne": "bisteca",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 2
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Suco Natural",
+          "quantidade": 2,
+          "preco": 10
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Bala Diversas",
+          "quantidade": 1,
+          "preco": 0.2
+        }
+      ],
+      "observacao": "Sem.slalll",
+      "preco": 54.2
+    },
+    {
+      "tamanho": "media",
+      "carne": "Strogonoff de Frango",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 2
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Suco Natural",
+          "quantidade": 2,
+          "preco": 10
+        }
+      ],
+      "outros": [
+        {
+          "nome": "Bala Diversas",
+          "quantidade": 1,
+          "preco": 0.2
+        }
+      ],
+      "observacao": "Sem suco",
+      "preco": 52.2
     }
   ],
-  "troco": 10.0
+  "troco": 0
 }

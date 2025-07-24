@@ -1,13 +1,23 @@
 {
   "pedido_id": 32,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
-  "telefone": "41987762651",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 13:53",
-  "valor_total": 0.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "100",
-  "marmitas": [],
-  "troco": 100.0
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "41987999296",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "23/07/2025 21:35",
+  "valor_total": 25.0,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
+  "marmitas": [
+    {
+      "tamanho": "executiva",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
+      "observacoes": "",
+      "preco": 25
+    }
+  ],
+  "troco": 0
 }

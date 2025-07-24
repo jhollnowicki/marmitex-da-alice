@@ -1,44 +1,34 @@
 {
   "pedido_id": 20,
   "tipo_pedido": "Retirada",
-  "nome": "jhonatan",
+  "nome": "Juliana Andressa portes",
   "telefone": "",
   "endereco": "",
-  "data_hora": "23/07/2025 02:47",
-  "valor_total": 81.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "R$ 100,00",
-  "marmitas": [
+  "data_hora": "24/07/2025 01:21",
+  "valor_total": 45.9,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
+  "pratos": [
     {
-      "tamanho": "grande",
-      "carne": "carne de panela",
+      "base": "carne de panela",
       "adicionais": [
         {
-          "nome": "Ovo",
-          "quantidade": 1
-        },
-        {
-          "nome": "Almondegas",
-          "quantidade": 1
+          "nome": "Bife Grelhado",
+          "quantidade": 2,
+          "preco": 7
         }
       ],
       "bebidas": [
         {
-          "nome": "Coca-cola 2lts",
-          "quantidade": 2,
-          "preco": 14
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 1,
+          "preco": 12
         }
       ],
-      "outros": [
-        {
-          "nome": "Diamante Negro",
-          "quantidade": 4,
-          "preco": 6
-        }
-      ],
-      "observacoes": "",
-      "preco": 81
+      "outros": [],
+      "observacao": "",
+      "preco": 45.9
     }
   ],
-  "troco": 19.0
+  "troco": 0
 }

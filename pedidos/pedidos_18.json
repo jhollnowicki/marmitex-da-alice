@@ -1,29 +1,41 @@
 {
   "pedido_id": 18,
-  "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
-  "telefone": "41987999296",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "23/07/2025 02:45",
-  "valor_total": 95.7,
+  "tipo_pedido": "Retirada",
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "24/07/2025 01:17",
+  "valor_total": 148.5,
   "forma_pagamento": "Cartão",
   "troco_para": "",
-  "marmitas": [
+  "pratos": [
     {
-      "tamanho": "grande",
-      "carne": "Peito de Frango a Milanesa",
+      "base": "Strogonoff de Frango",
       "adicionais": [
         {
-          "nome": "Ovo",
-          "quantidade": 1
+          "nome": "Almondegas",
+          "quantidade": 1,
+          "preco": 7
         },
         {
           "nome": "Bife Grelhado",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 7
         },
         {
-          "nome": "Almondegas",
-          "quantidade": 1
+          "nome": "Peito de Frango a Milanesa",
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "Strogonoff de Frango",
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "Tilapia",
+          "quantidade": 1,
+          "preco": 7
         }
       ],
       "bebidas": [
@@ -70,8 +82,27 @@
           "preco": 1.5
         }
       ],
-      "observacoes": "",
-      "preco": 95.7
+      "observacao": "",
+      "preco": 114.6
+    },
+    {
+      "base": "Bife Grelhado",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "Tilapia",
+          "quantidade": 1,
+          "preco": 7
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
+      "observacao": "",
+      "preco": 33.9
     }
   ],
   "troco": 0

@@ -1,31 +1,76 @@
 {
   "pedido_id": 2,
-  "tipo_pedido": "Retirada",
-  "nome": "jhonatan",
-  "telefone": "",
-  "endereco": "",
-  "data_hora": "23/07/2025 00:33",
-  "valor_total": 20.0,
+  "tipo_pedido": "Entrega",
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "41987999296",
+  "endereco": "Rua Pontal do Parana 55",
+  "data_hora": "24/07/2025 00:07",
+  "valor_total": 194.0,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "grande",
-      "carne": "Bife Grelhado",
+      "tamanho": "media",
+      "carne": "Peito de Frango a Milanesa",
       "adicionais": [
         {
-          "nome": "Almondegas",
-          "quantidade": 0
-        },
-        {
-          "nome": "Strogonoff de Frango",
-          "quantidade": 0
+          "nome": "Bife Grelhado",
+          "quantidade": 3
         }
       ],
-      "bebidas": [],
+      "bebidas": [
+        {
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 1,
+          "preco": 12
+        },
+        {
+          "nome": "Suco Natural",
+          "quantidade": 2,
+          "preco": 10
+        }
+      ],
       "outros": [],
-      "observacoes": "",
-      "preco": 20
+      "observacoes": "Mais macarrão",
+      "preco": 71,
+      "observacao": ""
+    },
+    {
+      "tamanho": "media",
+      "carne": "Strogonoff de Frango",
+      "adicionais": [],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 2,
+          "preco": 14
+        }
+      ],
+      "outros": [],
+      "observacoes": "Sem feijao",
+      "preco": 46,
+      "observacao": ""
+    },
+    {
+      "tamanho": "top3",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 3
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 2,
+          "preco": 14
+        }
+      ],
+      "outros": [],
+      "observacoes": "Sem farofa",
+      "preco": 77,
+      "observacao": ""
     }
   ],
   "troco": 0

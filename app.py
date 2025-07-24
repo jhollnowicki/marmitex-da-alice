@@ -228,6 +228,7 @@ def pedido():
             marmita["bebidas"] = bebidas_processadas
             marmita["outros"] = outros_processados
             marmita["preco"] = round(preco_total_marmita, 2)
+            marmita["observacao"] = marmita.get("observacao", "")
 
             total += preco_total_marmita
 
@@ -265,7 +266,8 @@ def pedido():
             adicionais = prato.get("adicionais", [])
             bebidas = prato.get("bebidas", [])
             outros = prato.get("outros", [])
-            observacoes = prato.get("observacoes", "")
+            observacao = prato.get("observacao", "")
+
 
             preco_total = 0.0
 
@@ -301,7 +303,7 @@ def pedido():
                 "adicionais": adicionais,
                 "bebidas": bebidas,
                 "outros": outros,
-                "observacoes": observacoes,
+                "observacao": observacao,
                 "preco": round(preco_total, 2)
             })
 
@@ -519,6 +521,47 @@ def recibo_prato(pedido_id):
         troco_para=troco_para,
         troco=troco
     )
+
+
+@app.route("/recibo_rawbt.txt")
+def recibo_rawbt():
+    if 'pedido_data' not in session:
+        return "Erro: pedido não encontrado", 404
+
+    pedido = session['pedido_data']
+
+    conteudo = f"""
+Marmitex da Alice
+Cliente: {pedido['nome']}
+Telefone: {pedido['telefone']}
+Endereço: {pedido['endereco']}
+Pedido Nº: {pedido['pedido_id']}
+Data: {pedido['data_hora'].split(" ")[0]} Hora: {pedido['data_hora'].split(" ")[1]}
+"""
+
+    for marmita in pedido['marmitas']:
+        conteudo += f"\n1x Marmita ({marmita['tamanho']})\nCarne: {marmita['carne']}"
+        for adicional in marmita['adicionais']:
+            if adicional['quantidade'] > 0:
+                conteudo += f"\n{adicional['quantidade']}x Adicional {adicional['nome']}"
+        for bebida in marmita['bebidas']:
+            if bebida['quantidade'] > 0:
+                conteudo += f"\n{bebida['quantidade']}x {bebida['nome']}"
+        for outro in marmita['outros']:
+            if outro['quantidade'] > 0:
+                conteudo += f"\n{outro['quantidade']}x {outro['nome']}"
+
+    conteudo += f"\n\nTotal: R$ {pedido['valor_total']:.2f}"
+    conteudo += f"\nPagamento: {pedido['forma_pagamento']}"
+
+    if pedido['forma_pagamento'] == "Dinheiro":
+        conteudo += f"\nTroco para: R$ {pedido['troco_para']:.2f}"
+        conteudo += f"\nTroco: R$ {pedido['troco']:.2f}"
+
+    return conteudo, 200, {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Content-Disposition': 'inline; filename="recibo.txt"'
+    }
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

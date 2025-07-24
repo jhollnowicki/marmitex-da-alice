@@ -2,55 +2,61 @@
   "pedido_id": 8,
   "tipo_pedido": "Entrega",
   "nome": "jhonatan",
-  "telefone": "41987762651",
+  "telefone": "41987999296",
   "endereco": "rua pontal do parana 73",
-  "data_hora": "22/07/2025 18:07",
-  "valor_total": 20.0,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "150",
+  "data_hora": "24/07/2025 00:35",
+  "valor_total": 104.4,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "Bife Grelhado",
+      "carne": "Peito de Frango a Milanesa",
       "adicionais": [
         {
+          "nome": "Ovo",
+          "quantidade": 2
+        },
+        {
           "nome": "Almondegas",
-          "preco": 7,
-          "quantidade": 0
-        },
-        {
-          "nome": "Peito de Frango a Milanesa",
-          "preco": 7,
-          "quantidade": 0
-        },
-        {
-          "nome": "Strogonoff de Frango",
-          "preco": 7,
-          "quantidade": 0
+          "quantidade": 2
         }
       ],
       "bebidas": [
         {
-          "nome": "Coca-Cola 2lt",
-          "preco": 14,
-          "quantidade": 0
-        },
-        {
-          "nome": "Suco Natural",
-          "preco": 8,
-          "quantidade": 0
+          "nome": "Coca-cola 2lts",
+          "quantidade": 2,
+          "preco": 14
         }
       ],
       "outros": [
         {
-          "nome": "Chocolate Diamante Negro",
-          "preco": 5,
-          "quantidade": 0
+          "nome": "Bala Diversas",
+          "quantidade": 2,
+          "preco": 0.2
         }
       ],
-      "observacoes": "",
-      "preco": 20.0
+      "observacao": "sem farofa",
+      "preco": 66.4
+    },
+    {
+      "tamanho": "grande",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
+      "observacao": "sdaasasdas",
+      "preco": 20
+    },
+    {
+      "tamanho": "media",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
+      "observacao": "sem cebola",
+      "preco": 18
     }
   ],
-  "troco": 130.0
+  "troco": 0
 }

@@ -1,20 +1,32 @@
 {
   "pedido_id": 30,
-  "tipo_pedido": "Entrega",
-  "nome": "juliana andressa",
-  "telefone": "41987762651",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 13:49",
-  "valor_total": 20.0,
+  "tipo_pedido": "Retirada",
+  "nome": "Juliana Andressa portes",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "24/07/2025 01:51",
+  "valor_total": 47.9,
   "forma_pagamento": "Cartão",
   "troco_para": "",
-  "marmitas": [
+  "pratos": [
     {
-      "tamanho": "grande",
-      "carne": "Bife Grelhado",
-      "adicionais": "",
-      "observacoes": "",
-      "preco": 20
+      "base": "Bife Grelhado",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 3,
+          "preco": 7
+        },
+        {
+          "nome": "Tilapia",
+          "quantidade": 1,
+          "preco": 7
+        }
+      ],
+      "bebidas": [],
+      "outros": [],
+      "observacao": "",
+      "preco": 47.9
     }
   ],
   "troco": 0

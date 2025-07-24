@@ -1,53 +1,50 @@
 {
   "pedido_id": 4,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatta",
+  "nome": "Jhonatan Peres Nowicki",
   "telefone": "41987999296",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "23/07/2025 00:45",
-  "valor_total": 114.0,
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "24/07/2025 00:13",
+  "valor_total": 66.5,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "grande",
-      "carne": "Bife Grelhado",
+      "tamanho": "media",
+      "carne": "Peito de Frango a Milanesa",
       "adicionais": [
         {
-          "nome": "Almondegas",
-          "quantidade": 2
-        },
-        {
-          "nome": "Peito de Frango a Milanesa",
-          "quantidade": 2
-        },
-        {
-          "nome": "Strogonoff de Frango",
-          "quantidade": 2
+          "nome": "Bife Grelhado",
+          "quantidade": 1
         }
       ],
       "bebidas": [
         {
-          "nome": "Coca-Cola 2lt",
-          "quantidade": 2
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 2,
+          "preco": 12
         },
         {
-          "nome": "Coca-Cola lata 350ml",
-          "quantidade": 2
+          "nome": "Fanta Uva",
+          "quantidade": 1,
+          "preco": 14
         }
       ],
       "outros": [
         {
-          "nome": "Chocolate Diamante Negro",
-          "quantidade": 2
+          "nome": "Bombom",
+          "quantidade": 1,
+          "preco": 2
         },
         {
-          "nome": "Balas Diversas",
-          "quantidade": 10
+          "nome": "Pirulito",
+          "quantidade": 1,
+          "preco": 1.5
         }
       ],
-      "observacoes": "sem feijao",
-      "preco": 114.0
+      "observacoes": "Sen fejs",
+      "preco": 66.5,
+      "observacao": ""
     }
   ],
   "troco": 0

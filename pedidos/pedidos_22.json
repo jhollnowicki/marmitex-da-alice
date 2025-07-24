@@ -4,29 +4,16 @@
   "nome": "jhonatan",
   "telefone": "",
   "endereco": "",
-  "data_hora": "23/07/2025 03:03",
-  "valor_total": 137.5,
+  "data_hora": "24/07/2025 01:40",
+  "valor_total": 143.0,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "pratos": [
     {
-      "base": "Bife Grelhado",
-      "adicionais": [],
-      "bebidas": [],
-      "outros": [],
-      "observacoes": "",
-      "preco": 19.9
-    },
-    {
-      "base": "Bife Grelhado",
+      "base": "Tilapia",
       "adicionais": [
         {
           "nome": "Almondegas",
-          "quantidade": 1,
-          "preco": 7
-        },
-        {
-          "nome": "Bife Grelhado",
           "quantidade": 1,
           "preco": 7
         },
@@ -39,16 +26,6 @@
           "nome": "Strogonoff de Frango",
           "quantidade": 1,
           "preco": 7
-        },
-        {
-          "nome": "Tilapia",
-          "quantidade": 1,
-          "preco": 7
-        },
-        {
-          "nome": "ovo",
-          "quantidade": 1,
-          "preco": 3
         }
       ],
       "bebidas": [
@@ -63,11 +40,6 @@
           "preco": 12
         },
         {
-          "nome": "Suco Natural",
-          "quantidade": 1,
-          "preco": 10
-        },
-        {
           "nome": "Fanta Uva",
           "quantidade": 1,
           "preco": 14
@@ -80,23 +52,43 @@
           "preco": 0.2
         },
         {
-          "nome": "Bombom",
-          "quantidade": 1,
-          "preco": 2
-        },
-        {
           "nome": "Diamante Negro",
           "quantidade": 1,
           "preco": 6
+        }
+      ],
+      "observacao": "sem salada",
+      "preco": 87.1
+    },
+    {
+      "base": "carne de panela",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 4,
+          "preco": 7
+        }
+      ],
+      "bebidas": [],
+      "outros": [
+        {
+          "nome": "Bala Diversas",
+          "quantidade": 5,
+          "preco": 0.2
+        },
+        {
+          "nome": "Bombom",
+          "quantidade": 2,
+          "preco": 2
         },
         {
           "nome": "Pirulito",
-          "quantidade": 1,
+          "quantidade": 2,
           "preco": 1.5
         }
       ],
-      "observacoes": "",
-      "preco": 117.6
+      "observacao": "sem feijao",
+      "preco": 55.9
     }
   ],
   "troco": 0

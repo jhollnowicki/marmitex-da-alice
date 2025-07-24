@@ -1,46 +1,43 @@
 {
   "pedido_id": 19,
-  "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
-  "telefone": "41987999296",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "23/07/2025 02:45",
-  "valor_total": 145.7,
-  "forma_pagamento": "Cartão",
+  "tipo_pedido": "Retirada",
+  "nome": "",
+  "telefone": "",
+  "endereco": "",
+  "data_hora": "24/07/2025 01:20",
+  "valor_total": 77.4,
+  "forma_pagamento": "Pix",
   "troco_para": "",
-  "marmitas": [
+  "pratos": [
     {
-      "tamanho": "grande",
-      "carne": "Peito de Frango a Milanesa",
+      "base": "Bife Grelhado",
       "adicionais": [
         {
-          "nome": "Ovo",
-          "quantidade": 1
-        },
-        {
-          "nome": "Bife Grelhado",
-          "quantidade": 1
-        },
-        {
           "nome": "Almondegas",
-          "quantidade": 1
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "Peito de Frango a Milanesa",
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "Strogonoff de Frango",
+          "quantidade": 1,
+          "preco": 7
+        },
+        {
+          "nome": "Tilapia",
+          "quantidade": 1,
+          "preco": 7
         }
       ],
       "bebidas": [
         {
-          "nome": "Coca-cola 2lts",
-          "quantidade": 1,
-          "preco": 14
-        },
-        {
           "nome": "Guarana Antartica 2lts",
           "quantidade": 1,
           "preco": 12
-        },
-        {
-          "nome": "Suco Natural",
-          "quantidade": 1,
-          "preco": 10
         },
         {
           "nome": "Fanta Uva",
@@ -50,19 +47,9 @@
       ],
       "outros": [
         {
-          "nome": "Bala Diversas",
-          "quantidade": 1,
-          "preco": 0.2
-        },
-        {
           "nome": "Bombom",
           "quantidade": 1,
           "preco": 2
-        },
-        {
-          "nome": "Diamante Negro",
-          "quantidade": 1,
-          "preco": 6
         },
         {
           "nome": "Pirulito",
@@ -70,28 +57,8 @@
           "preco": 1.5
         }
       ],
-      "observacoes": "",
-      "preco": 95.7
-    },
-    {
-      "tamanho": "media",
-      "carne": "Peito de Frango a Milanesa",
-      "adicionais": [
-        {
-          "nome": "Almondegas",
-          "quantidade": 2
-        }
-      ],
-      "bebidas": [
-        {
-          "nome": "Suco Natural",
-          "quantidade": 2,
-          "preco": 10
-        }
-      ],
-      "outros": [],
-      "observacoes": "",
-      "preco": 50
+      "observacao": "",
+      "preco": 77.4
     }
   ],
   "troco": 0

@@ -1,20 +1,31 @@
 {
   "pedido_id": 33,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatta",
+  "nome": "Jhonatan Peres Nowicki",
   "telefone": "41987999296",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "20/07/2025 13:54",
-  "valor_total": 55.0,
-  "forma_pagamento": "",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "23/07/2025 21:39",
+  "valor_total": 36.0,
+  "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {
-      "tamanho": "grande",
-      "carne": "Bife Grelhado",
-      "adicionais": "Almondegas,Bife Grelhado,Peito de Frango a Milanesa,Strogonoff de Frango,Tilapia",
+      "tamanho": "media",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
       "observacoes": "",
-      "preco": 55
+      "preco": 18
+    },
+    {
+      "tamanho": "media",
+      "carne": "Strogonoff de Frango",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
+      "observacoes": "",
+      "preco": 18
     }
   ],
   "troco": 0

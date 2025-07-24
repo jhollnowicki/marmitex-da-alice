@@ -1,20 +1,33 @@
 {
   "pedido_id": 36,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatta",
-  "telefone": "41987762651",
-  "endereco": "rua pontal do parana 73",
-  "data_hora": "20/07/2025 14:12",
-  "valor_total": 55.0,
+  "nome": "Jhonatan Peres Nowicki",
+  "telefone": "41987999296",
+  "endereco": "Rua Pontal do Parana",
+  "data_hora": "23/07/2025 22:11",
+  "valor_total": 44.0,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "Bife Grelhado",
-      "adicionais": "Almondegas,Bife Grelhado,Peito de Frango a Milanesa,Strogonoff de Frango,Tilapia",
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 1,
+          "preco": 14
+        },
+        {
+          "nome": "Suco Natural",
+          "quantidade": 1,
+          "preco": 10
+        }
+      ],
+      "outros": [],
       "observacoes": "",
-      "preco": 55
+      "preco": 44
     }
   ],
   "troco": 0

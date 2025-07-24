@@ -1,49 +1,104 @@
 {
   "pedido_id": 3,
   "tipo_pedido": "Entrega",
-  "nome": "jhonatan",
+  "nome": "jhonatta",
   "telefone": "41987999296",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "23/07/2025 00:35",
-  "valor_total": 20.0,
+  "endereco": "rua pontal do parana 73",
+  "data_hora": "24/07/2025 00:12",
+  "valor_total": 243.4,
   "forma_pagamento": "Cartão",
   "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "Tilapia",
+      "carne": "Peito de Frango a Milanesa",
       "adicionais": [
         {
+          "nome": "Ovo",
+          "quantidade": 2
+        },
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 2
+        },
+        {
           "nome": "Almondegas",
-          "quantidade": 0
-        },
-        {
-          "nome": "Peito de Frango a Milanesa",
-          "quantidade": 0
-        },
-        {
-          "nome": "Strogonoff de Frango",
-          "quantidade": 0
+          "quantidade": 2
         }
       ],
       "bebidas": [
         {
-          "nome": "Coca-Cola 2lt",
-          "quantidade": 0
+          "nome": "Coca-cola 2lts",
+          "quantidade": 2,
+          "preco": 14
+        },
+        {
+          "nome": "Guarana Antartica 2lts",
+          "quantidade": 2,
+          "preco": 12
         },
         {
           "nome": "Suco Natural",
-          "quantidade": 0
+          "quantidade": 2,
+          "preco": 10
+        },
+        {
+          "nome": "Fanta Uva",
+          "quantidade": 2,
+          "preco": 14
         }
       ],
       "outros": [
         {
-          "nome": "Chocolate Diamante Negro",
-          "quantidade": 0
+          "nome": "Bala Diversas",
+          "quantidade": 2,
+          "preco": 0.2
+        },
+        {
+          "nome": "Bombom",
+          "quantidade": 2,
+          "preco": 2
+        },
+        {
+          "nome": "Diamante Negro",
+          "quantidade": 2,
+          "preco": 6
+        },
+        {
+          "nome": "Pirulito",
+          "quantidade": 2,
+          "preco": 1.5
         }
       ],
-      "observacoes": "",
-      "preco": 20
+      "observacoes": "sem farofa",
+      "preco": 171.4,
+      "observacao": ""
+    },
+    {
+      "tamanho": "grande",
+      "carne": "Strogonoff de Frango",
+      "adicionais": [
+        {
+          "nome": "Bife Grelhado",
+          "quantidade": 4
+        }
+      ],
+      "bebidas": [
+        {
+          "nome": "Coca-cola 2lts",
+          "quantidade": 1,
+          "preco": 14
+        },
+        {
+          "nome": "Suco Natural",
+          "quantidade": 1,
+          "preco": 10
+        }
+      ],
+      "outros": [],
+      "observacoes": "sem feijoa",
+      "preco": 72,
+      "observacao": ""
     }
   ],
   "troco": 0

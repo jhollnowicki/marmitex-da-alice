@@ -1,70 +1,24 @@
 {
   "pedido_id": 6,
   "tipo_pedido": "Entrega",
-  "nome": "juliana andressa",
-  "telefone": "41987762651",
-  "endereco": "RUA PONTAL DO PARANA",
-  "data_hora": "23/07/2025 00:50",
-  "valor_total": 188.6,
-  "forma_pagamento": "Dinheiro",
-  "troco_para": "200",
+  "nome": "jhonatta",
+  "telefone": "41987999296",
+  "endereco": "rua pontal do parana 73",
+  "data_hora": "24/07/2025 00:20",
+  "valor_total": 20.0,
+  "forma_pagamento": "Cartão",
+  "troco_para": "",
   "marmitas": [
     {
       "tamanho": "grande",
-      "carne": "carne de panela",
-      "adicionais": [
-        {
-          "nome": "Almondegas",
-          "quantidade": 3
-        },
-        {
-          "nome": "Peito de Frango a Milanesa",
-          "quantidade": 3
-        },
-        {
-          "nome": "Strogonoff de Frango",
-          "quantidade": 3
-        },
-        {
-          "nome": "Tilapia",
-          "quantidade": 3
-        },
-        {
-          "nome": "ovo",
-          "quantidade": 2
-        }
-      ],
-      "bebidas": [
-        {
-          "nome": "Coca-Cola 2lt",
-          "quantidade": 2
-        },
-        {
-          "nome": "Coca-Cola lata 350ml",
-          "quantidade": 2
-        },
-        {
-          "nome": "Suco Natural",
-          "quantidade": 2
-        }
-      ],
-      "outros": [
-        {
-          "nome": "Chocolate Diamante Negro",
-          "quantidade": 2
-        },
-        {
-          "nome": "Amendoin",
-          "quantidade": 3
-        },
-        {
-          "nome": "Balas Diversas",
-          "quantidade": 3
-        }
-      ],
-      "observacoes": "",
-      "preco": 188.6
+      "carne": "Peito de Frango a Milanesa",
+      "adicionais": [],
+      "bebidas": [],
+      "outros": [],
+      "observacoes": "asdas",
+      "preco": 20,
+      "observacao": ""
     }
   ],
-  "troco": 11.4
+  "troco": 0
 }
