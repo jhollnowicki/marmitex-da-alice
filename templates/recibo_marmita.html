@@ -65,7 +65,8 @@
         display: none !important;
       }
 
-      td, th {
+      td,
+      th {
         padding: 1px 0 !important;
         font-size: 10px !important;
       }
@@ -125,8 +126,10 @@
               <td>{{ adicional.quantidade }}</td>
               <td>Adicional: {{ adicional.nome }}</td>
               <td class="text-right">
-                {% set precos_adicional = PRECOS.marmita.adicionais | selectattr('nome', 'equalto', adicional.nome) | map(attribute='preco') | list %}
-                R$ {{ '%.2f'|format((precos_adicional[0] if precos_adicional|length > 0 else 0) * adicional.quantidade) }}
+                {% set precos_adicional = PRECOS.marmita.adicionais | selectattr('nome', 'equalto', adicional.nome) |
+                map(attribute='preco') | list %}
+                R$ {{ '%.2f'|format((precos_adicional[0] if precos_adicional|length > 0 else 0) * adicional.quantidade)
+                }}
               </td>
             </tr>
             {% endif %}
@@ -154,7 +157,11 @@
 
             <!-- Separador entre marmitas -->
             {% if not loop.last %}
-            <tr><td colspan="3"><hr class="border-t border-gray-300 my-1"></td></tr>
+            <tr>
+              <td colspan="3">
+                <hr class="border-t border-gray-300 my-1">
+              </td>
+            </tr>
             {% endif %}
             {% endfor %}
           </tbody>
@@ -192,7 +199,8 @@
     </div>
 
     <div class="no-print">
-      <button onclick="imprimirReciboInteligente()" class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
+      <button onclick="imprimirReciboInteligente()"
+        class="font-bold bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
         🖨️ Imprimir
       </button>
     </div>
@@ -234,10 +242,6 @@ Obrigado pela preferencia!
   </textarea>
 
   <script>
-    window.onafterprint = () => {
-      window.location.href = "/escolha";
-    };
-
     function imprimirReciboInteligente() {
       const isAndroid = /android/i.test(navigator.userAgent);
       if (isAndroid) {
@@ -247,11 +251,22 @@ Obrigado pela preferencia!
         const link = document.getElementById("rawbt-link");
         link.setAttribute("href", rawbtUrl);
         link.click();
+
+        // ✅ Redireciona após 6 segundos
+        setTimeout(() => {
+          window.location.href = "/escolha";
+        }, 6000);
       } else {
         window.print();
       }
     }
+
+    window.onafterprint = () => {
+      window.location.href = "/escolha";
+    };
   </script>
 
+
 </body>
+
 </html>

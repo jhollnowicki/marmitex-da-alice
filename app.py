@@ -4,8 +4,14 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from datetime import datetime
 import os
 
+from dotenv import load_dotenv
+import os
+
+
 app = Flask(__name__)
 app.secret_key = 'chave_super_secreta'
+
+
 
 def carregar_precos():
     try:
@@ -25,22 +31,32 @@ PRECOS = carregar_precos()
 def index():
     return redirect(url_for('login'))
 
+@app.route("/ping")
+def ping():
+    return "OK", 200
 
+
+
+
+load_dotenv()
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         usuario = request.form['usuario']
         senha = request.form['senha']
-        if usuario == 'Bruno' and senha == "1234":
+
+        if usuario == os.getenv("USUARIO_DONO") and senha == os.getenv("SENHA_DONO"):
             session['usuario'] = 'dono'
             return redirect(url_for('escolha_tipo'))
         
-        elif usuario == 'funcionario' and senha == "1234":
+        elif usuario == os.getenv("USUARIO_FUNC") and senha == os.getenv("SENHA_FUNC"):
             session['usuario'] = 'funcionario'
-            return redirect(url_for('escolha_tipo'))  # <- sem a barra aqui também
+            return redirect(url_for('escolha_tipo'))
+        
         else:
             return render_template("login.html", erro="Usuario ou senha Inválido")
+    
     return render_template('login.html')
 
 @app.route('/logout')
